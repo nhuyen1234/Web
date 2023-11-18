@@ -15,7 +15,7 @@ include('config.php');
         <h4>THÔNG TIN LIÊN HỆ</h4><!--Thông tin liên hệ -->
         <p>Tuyển dụng:<a href ="https://www.facebook.com/DirtyCoins.VN/ "> https://www.facebook.com/DirtyCoins.VN/ </a> </p>
         <p>Website:<a href ="liên kết "> https://dirtycoins.vn/ </a></p>
-        <p>Liên hệ CSKH: Support@<a href ="liên kết ">  https://dirtycoins.vn/lien-he </a></p>
+        <p>Liên hệ CSKH: Support@<a href ="https://dirtycoins.vn/lien-he">  https://dirtycoins.vn/lien-he </a></p>
         <p>For business: Contact@<a href ="liên kết "> 0933 800 190 - 1900252557 </a></p>
     </div>
     <div class="col">
