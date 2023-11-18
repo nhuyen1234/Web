@@ -19,7 +19,7 @@ foreach ($cart as $item) {
     $idList[] = $item['id'];
 }
 if (count($idList) > 0) {
-    $idList = implode(',', $idList); // chuyeern
+    $idList = implode(',', $idList); // chuyển
     //[2, 5, 6] => 2,5,6
 
     $sql = "select * from product where id in ($idList)";
@@ -407,7 +407,7 @@ if (count($idList) > 0) {
 
 </html>
 <!--------------------FOOTER--------------------------- -->
-<footer class="section-p1"><!--mục footer -->
+<footer class="section-p1"><!--Mục footer -->
     <div class="col">
         <h4>HỆ THỐNG CỬA HÀNG</h4><!--Hệ thông cửa hàng -->
         <p>Quận 10 - 561 Sư Vạn Hạnh, Phường 13.</p>
@@ -417,10 +417,10 @@ if (count($idList) > 0) {
     </div> 
     <div class="col">
         <h4>THÔNG TIN LIÊN HỆ</h4><!--Thông tin liên hệ -->
-        <p>Tuyển dụng:<a href ="liên kết "> https://www.facebook.com/DirtyCoins.VN/ </a> </p>
-        <p>Website:<a href ="liên kết "> https://dirtycoins.vn/ </a></p>
-        <p>Liên hệ CSKH: support@<a href ="liên kết "> https://dirtycoins.vn/lien-he </a></p>
-        <p>For business: contact@<a href ="liên kết "> 0933 800 190 - 1900252557 </a></p>
+        <p>Tuyển dụng:<a href ="https://www.facebook.com/DirtyCoins.VN/ "> https://www.facebook.com/DirtyCoins.VN/ </a> </p>
+        <p>Website:<a href ="https://dirtycoins.vn/  "> https://dirtycoins.vn/ </a></p>
+        <p>Liên hệ CSKH: Support@<a href ="https://dirtycoins.vn/lien-he "> https://dirtycoins.vn/lien-he </a></p>
+        <p>For business: Sontact@<a href ="0933 800 190 - 1900252557 "> 0933 800 190 - 1900252557 </a></p>
     </div>
     <div class="col">
         <h4>FOLLOW US ON SOCIAL MEDIA</h4><!--Follow us on social media-->

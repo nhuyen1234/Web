@@ -13,10 +13,10 @@ include('config.php');
     </div> 
     <div class="col">
         <h4>THÔNG TIN LIÊN HỆ</h4><!--Thông tin liên hệ -->
-        <p>Tuyển dụng:<a href ="https://www.facebook.com/DirtyCoins.VN/ ">facebook </a> </p>
-        <p>Website:<a href ="liên kết "> https://dirtycoins.vn/ </a></p>
-        <p>Liên hệ CSKH: Support@<a href ="https://dirtycoins.vn/lien-he">  https://dirtycoins.vn/lien-he </a></p>
-        <p>For business: Contact@<a href ="liên kết "> 0933 800 190 - 1900252557 </a></p>
+        <p>Tuyển dụng:<a href ="https://www.facebook.com/DirtyCoins.VN/"> https://www.facebook.com/DirtyCoins.VN/</a> </p>
+        <p>Website:<a href="https://dirtycoins.vn/"> https://dirtycoins.vn/</a></p>
+        <p>Liên hệ CSKH: Support@<a href ="https://dirtycoins.vn/lien-he"> https://dirtycoins.vn/lien-he</a></p>
+        <p>For business: Contact@<a href ="0933 800 190 - 1900252557"> 0933 800 190 - 1900252557</a></p>
     </div>
     <div class="col">
         <h4>FOLLOW US ON SOCIAL MEDIA</h4><!--Follow us on social media-->
