@@ -438,7 +438,8 @@ footer{
     margin-top:0px;
     justify-content: space-around;
     margin-bottom:0px;
-    padding-bottom: 10px;   /*chỉnh size background đen */
+    padding-bottom: 20px;   /*chỉnh size background đen */
+    padding-left:150px;
     
 }
 footer.col{

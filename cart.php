@@ -4,6 +4,7 @@
 require_once('./database/dbhelper.php');
 require_once('./utils/utility.php');
 
+
     $cart = [];
     if (isset($_COOKIE['cart'])) {
         $json = $_COOKIE['cart'];
@@ -239,6 +240,7 @@ require_once('./utils/utility.php');
     border: 1px solid grey;
     border-radius: 5px;
     padding: 10px 0;
+    background-color: white;
     }
     .login .logout a{
     color: black;
@@ -248,6 +250,7 @@ require_once('./utils/utility.php');
     }
     .login .logout a:hover{
     opacity: 0.8;
+    
     }
     #menu {
         list-style:none;
@@ -427,11 +430,7 @@ footer{
     justify-content: space-around;
     margin-bottom:0px;
     padding-bottom: 20px;   /*chỉnh size background đen */
-    float: left;
-    height: 25%;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
+    padding-left:150px;
     
 }
 footer.col{
@@ -466,5 +465,5 @@ footer li{ /*chỉnh icon fb,instagram,youtube*/
   @media screen and  (max-width: 870px)  and (min-width:300px){
     body {
    width: 1500px;
-    }
+    }}
 </style>

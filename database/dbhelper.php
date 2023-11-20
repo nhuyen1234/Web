@@ -1,6 +1,7 @@
 <?php
 require_once('config.php');
 
+
 function execute($sql)
 {
 	//save data into table
@@ -44,4 +45,19 @@ function executeSingleResult($sql)
 	mysqli_close($con);
 
 	return $row;
+}
+
+function orderstatus($n) {
+	switch ($n){
+		case 0:
+			$status = 'Đang chuẩn bị';
+			break;
+		case 1:
+			$status = 'Đặt hàng thành công';
+			break;
+		default:
+			$status = 'Đặt hàng thành công';
+			break;
+	}
+	return $status;
 }
