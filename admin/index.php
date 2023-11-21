@@ -119,7 +119,7 @@ header("content-type:text/html; charset=UTF-8");
 
                                 $sql = "SELECT * from orders, order_details, product
                                 where order_details.order_id=orders.id and product.id=order_details.product_id ORDER BY order_date DESC limit $start,$limit ";
-                                $order_details_List = executeResult($sql);
+                                $order_details_List = executeResult_query($sql);
                                 $total = 0;
                                 $count = 0;
                                 // if (is_array($order_details_List) || is_object($order_details_List)){

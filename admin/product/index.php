@@ -82,9 +82,9 @@ require_once('../database/dbhelper.php');
                         $limit = 5;
                         $start = ($page - 1) * $limit;
                         $sql = "SELECT * FROM product limit $start,$limit";
-                        executeResult($sql);
+                        executeResult_query($sql);
                         // $sql = 'select * from product limit $star,$limit';
-                        $productList = executeResult($sql);
+                        $productList = executeResult_query($sql);
 
                         $index = 1;
                         foreach ($productList as $item) {

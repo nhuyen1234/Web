@@ -82,9 +82,9 @@ require_once('database/dbhelper.php');
                                 $count = 0;
                                 $sql = "SELECT * from orders, order_details, product
                                 where order_details.order_id=orders.id and product.id=order_details.product_id and order_id=$order_id";
-                                $order_details_List = executeResult($sql);
+                                $order_details_List = executeResult_query($sql);
                                 foreach ($order_details_List as $item) {
-                                    $orderstatus = orderstatus($item['status']);
+                                    $orderstatus = orderstatus_query($item['status']);
                                     echo '
                                         <tr style="text-align: center;">
                                             <td width="50px">' . (++$count) . '</td>
@@ -95,7 +95,8 @@ require_once('database/dbhelper.php');
                                             <td width="100px">' . $item['phone_number'] . '</td>
                                             <td>
                                                 <select name="status" id="status" onchange="status(' . $item['order_id'] . ')">
-                                                    <option value="Đặt hàng thành công">'. $orderstatus. order_status($item['status']) .'</option>
+                                                    <option value="Đặt hàng thành công">'. $orderstatus. order_status_query($item['status']) .'</option>
+                                                    
                                                 </select>
                                             </td>
                                             <td width="100px">
@@ -117,7 +118,7 @@ require_once('database/dbhelper.php');
                 if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     $status = $_POST['status'];
                     $sql = "UPDATE `order_details` SET `status` = '$status' WHERE `order_id` = $order_id";
-                    execute($sql);
+                    execute_query($sql);
                     echo '<script language="javascript">
                     alert("Cập nhật thành công!");
                     window.location = "dashboard.php";

@@ -25,7 +25,7 @@ if (!empty($_POST['name'])) {
             // Sửa danh mục
             $sql = 'update category set name="' . $name . '", updated_at="' . $updated_at . '" where id=' . $id;
         }
-        execute($sql);
+        execute_query($sql);
         header('Location: index.php');
         die();
     }

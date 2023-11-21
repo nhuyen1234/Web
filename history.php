@@ -337,7 +337,7 @@ require_once('utils/utility.php');
                                         $userId = $item['id_dangky'];
                                     }
                                     
-                                    $sql = "SELECT * from order_details, product where product.id=order_details.product_id AND order_details.id_user = '$userId' ORDER BY order_id DESC";
+                                    $sql = "SELECT * from order_details, product where product.id=order_details.product_id AND order_details.id_user = id_user ORDER BY order_id DESC";
                                     $order_details_List = executeResult($sql);
                                     $total = 0;
                                     $count = 0;

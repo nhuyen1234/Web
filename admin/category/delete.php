@@ -10,7 +10,7 @@ if (isset($POST['id'])) {
 
 
 $sql = 'delete from category where id=' . $id;
-execute($sql);
+execute_query($sql);
 header('Location: index.php');
 die();
 }

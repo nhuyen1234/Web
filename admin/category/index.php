@@ -57,7 +57,7 @@ require_once('../database/dbhelper.php');
                     <?php
                     // Lấy danh sách danh mục
                     $sql = 'select * from category';
-                    $categoryList = executeResult($sql);
+                    $categoryList = executeResult_query($sql);
                     $index = 1;
                     foreach ($categoryList as $item) {
                         echo '  <tr>

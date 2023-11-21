@@ -1,7 +1,7 @@
 <?php
 require_once('config.php');
 
-function execute($sql)
+function execute_query($sql)
 {
 	//save data into table
 	// open connection to database
@@ -14,7 +14,7 @@ function execute($sql)
 	mysqli_close($con);
 }
 
-function executeResult($sql)
+function executeResult_query($sql)
 {
 	//save data into table
 	// open connection to database
@@ -33,7 +33,7 @@ function executeResult($sql)
 	return $data;
 }
 
-function executeSingleResult($sql)
+function executeSingleResult_query($sql)
 {
 	//save data into table
 	// open connection to database
@@ -49,13 +49,13 @@ function executeSingleResult($sql)
 	return $row;
 }
 
-function order_status($sql){
+function order_status_query($sql){
 	$con = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
 	$sql = "UPDATE order_details SET status = 'Đặt hàng thành công' WHERE 1";
 	mysqli_query($con, $sql);
 }
 
-function orderstatus($n) {
+function orderstatus_query($n) {
 	switch ($n){
 		case 0:
 			$status = "Đang chuẩn bị";
