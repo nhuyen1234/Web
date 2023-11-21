@@ -81,7 +81,7 @@ header("content-type:text/html; charset=UTF-8");
                                 $count = 0;
                                 // if (is_array($order_details_List) || is_object($order_details_List)){
                                 foreach ($order_details_List as $item) {
-                                    $orderstatus = orderstatus($item['status']);
+                                    $orderstatus = order_status($item['status']);
                                     echo '
                                         <tr style="text-align: center;">
                                             <td width="50px">' . (++$count) . '</td>
