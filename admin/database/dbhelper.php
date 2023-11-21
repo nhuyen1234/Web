@@ -48,3 +48,9 @@ function executeSingleResult($sql)
 
 	return $row;
 }
+
+function order_status($sql){
+	$con = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
+	$sql = "UPDATE order_details SET status = 'Đặt hàng thành công' WHERE 1";
+	mysqli_query($con, $sql);
+}

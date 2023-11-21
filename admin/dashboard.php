@@ -90,7 +90,7 @@ header("content-type:text/html; charset=UTF-8");
                                             <td class="b-500 red">' . number_format($item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
                                             <td width="100px">' . $item['address'] . '</td>
                                             <td width="100px">' . $item['phone_number'] . '</td>
-                                            <td width="100px" class="green b-500">' . $orderstatus . '</td>
+                                            <td width="100px" class="green b-500">' . $orderstatus  . '</td>
                                             <td width="100px">
                                                 <a href="edit.php?order_id=' . $item['order_id'] . '" class="btn btn-success">Edit</a>
                                             </td>
