@@ -55,6 +55,12 @@ function order_status_query($sql){
 	mysqli_query($con, $sql);
 }
 
+function order_status_query2($sql){
+	$con = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
+	$sql = "UPDATE order_details SET status = 'Đang chuẩn bị' WHERE 1";
+	mysqli_query($con, $sql);
+}
+
 function orderstatus_query($n) {
 	switch ($n){
 		case 0:
@@ -62,6 +68,18 @@ function orderstatus_query($n) {
 			break;
 		default:
 			$status = 'Đặt hàng thành công';
+			break;
+	}
+	return $status;
+}
+
+function orderstatus_query2($n) {
+	switch ($n){
+		case 0:
+			$status = "Đặt hàng thành công";
+			break;
+		default:
+			$status = 'Đang chuẩn bị';
 			break;
 	}
 	return $status;
