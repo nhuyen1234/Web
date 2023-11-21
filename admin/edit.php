@@ -84,6 +84,7 @@ require_once('database/dbhelper.php');
                                 where order_details.order_id=orders.id and product.id=order_details.product_id and order_id=$order_id";
                                 $order_details_List = executeResult($sql);
                                 foreach ($order_details_List as $item) {
+                                    $orderstatus = orderstatus($item['status']);
                                     echo '
                                         <tr style="text-align: center;">
                                             <td width="50px">' . (++$count) . '</td>
@@ -94,10 +95,7 @@ require_once('database/dbhelper.php');
                                             <td width="100px">' . $item['phone_number'] . '</td>
                                             <td>
                                                 <select name="status" id="status" onchange="status(' . $item['order_id'] . ')">
-                                                    <option value="Đang chuẩn bị">Đang chuẩn bị</option>
-                                                    <option value="Đang giao">Đang giao</option>
-                                                    <option value="Đã nhận hàng">Đã nhận hàng</option>
-                                                    <option value="Đã hủy">Đã hủy</option>
+                                                    <option value="Đặt hàng thành công">'. $orderstatus. order_status($item['status']) .'</option>
                                                 </select>
                                             </td>
                                             <td width="100px">
