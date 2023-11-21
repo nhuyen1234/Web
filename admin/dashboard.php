@@ -3,6 +3,8 @@ header("content-type:text/html; charset=UTF-8");
 ?>
 <?php 
     require_once('database/dbhelper.php');
+    require_once('./checkout.php');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,7 +83,7 @@ header("content-type:text/html; charset=UTF-8");
                                 $count = 0;
                                 // if (is_array($order_details_List) || is_object($order_details_List)){
                                 foreach ($order_details_List as $item) {
-                                    $orderstatus = order_status($item['status']);
+                                    $orderstatus = orderstatus($item['status']);
                                     echo '
                                         <tr style="text-align: center;">
                                             <td width="50px">' . (++$count) . '</td>
@@ -90,7 +92,7 @@ header("content-type:text/html; charset=UTF-8");
                                             <td class="b-500 red">' . number_format($item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
                                             <td width="100px">' . $item['address'] . '</td>
                                             <td width="100px">' . $item['phone_number'] . '</td>
-                                            <td width="100px" class="green b-500">' . $orderstatus. orderstatus($item['status']) . '</td>
+                                            <td width="100px" class="green b-500">' . $orderstatus. order_status($item['status']) . '</td>
                                             <td width="100px">
                                                 <a href="edit.php?order_id=' . $item['order_id'] . '" class="btn btn-success">Edit</a>
                                             </td>
