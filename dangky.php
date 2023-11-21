@@ -527,8 +527,7 @@ footer li{ /*chỉnh icon fb,instagram,youtube*/
   @media screen and  (max-width: 870px)  and (min-width:300px){
     body {
    width: 1500px;
-    }
+    }}
 
 </style>
 
-<style>

@@ -309,9 +309,8 @@ require_once('utils/utility.php');
                                     $order_details_List = executeResult($sql);
                                     $total = 0;
                                     $count = 0;
-                                    // $sql = 'SELECT * FROM user where username = $username';
                                     foreach ($order_details_List as $item) {
-                                        $orderstatus = orderstatus($item['status']);
+                                        $status = orderstatus($item['status']=1);
                                         echo '
                                         <tr style="text-align: center;">
                                             <td width="50px">' . (++$count) . '</td>
@@ -322,11 +321,14 @@ require_once('utils/utility.php');
                                             <td class="b-500 orange">' . number_format($item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
                                             <td width="100px">' . $item['num'] . '</td>
                                             <td class="b-500 red">' . number_format($item['num'] * $item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
-                                            <td style="color:green; font-weight:600;">' . $orderstatus . '</td>
+                                            <td style="color:green; font-weight:600;">' . $status . '</td>
                                         </tr>
                                         ';
+                                        
                                     }
                                 }
+                                ?>
+                                <?php
 								//fix-code
 								if(isset($_COOKIE['tendangnhap'])) {
                                     $tendangnhap = $_COOKIE['tendangnhap'];
@@ -341,10 +343,10 @@ require_once('utils/utility.php');
                                     $order_details_List = executeResult($sql);
                                     $total = 0;
                                     $count = 0;
-                                    
+
                                     // $sql = 'SELECT * FROM user where username = $username';
                                     foreach ($order_details_List as $item) {
-                                        $orderstatus = orderstatus($item['status']);
+                                        $status = orderstatus($item['status']=1);
                                         echo '
                                         <tr style="text-align: center;">
                                             <td width="50px">' . (++$count) . '</td>
@@ -355,9 +357,10 @@ require_once('utils/utility.php');
                                             <td class="b-500 orange">' . number_format($item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
                                             <td width="100px">' . $item['num'] . '</td>
                                             <td class="b-500 red">' . number_format($item['num'] * $item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
-                                            <td style="color:green; font-weight:600;">' . $orderstatus . '</td>
+                                            <td style="color:green; font-weight:600;">' . $status . '</td>
                                         </tr>
                                         ';
+                                       
                                     }
                                 }
                                 ?>

@@ -50,10 +50,7 @@ function executeSingleResult($sql)
 function orderstatus($n) {
 	switch ($n){
 		case 0:
-			$status = 'Đang chuẩn bị';
-			break;
-		case 1:
-			$status = 'Đặt hàng thành công';
+			$status = "Đang chuẩn bị";
 			break;
 		default:
 			$status = 'Đặt hàng thành công';
