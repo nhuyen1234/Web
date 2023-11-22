@@ -82,7 +82,7 @@
                                                         }
                 } 
                 else {
-                             echo '<a href="login.php"">Đăng nhập</a>';
+                             echo '<a href="./view/login.php"">Đăng nhập</a>';
                                 }
                 ?>
                     
