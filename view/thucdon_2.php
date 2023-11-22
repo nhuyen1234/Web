@@ -72,14 +72,14 @@
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
                                 <div class="logout">
                                 <a href="/Web/admin/login.php"><i class="fas fa-user-edit"></i>Admin</a> <br>                             
-                                <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+                                <a href="/Web/index.php?dangxuat=1"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                                 </div>';
                                                         }
                             else{
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
                                 <div class="logout">
                                 <a href="#"><i class="fas fa-exchange-alt"></i>Đổi mật khẩu</a> <br>                           
-                                <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+                                <a href="/Web/index.php?dangxuat=1"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                                 </div>';
                                                         }
                 } 
