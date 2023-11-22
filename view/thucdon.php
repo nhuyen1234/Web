@@ -28,10 +28,10 @@
 </head>
 <!-----------------------HEARDER ----------------------------------------->
 <header>
-        <img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO -->
+<a href="/Web/view/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
         <div id="menu" style="margin-top:10px;">
                     <ul>
-                        <li><a href="view/index.php">Trang chủ</a></li><!--Trang chủ -->
+                        <li><a href="../index.php">Trang chủ</a></li><!--Trang chủ -->
                         <li>
                             <a href="#">Top</a><!--Top -->
                             <ul class="sub-menu">

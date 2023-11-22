@@ -51,7 +51,7 @@ if (isset($_GET['id'])) {
 <a href="/Web/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
   <div id="menu" style="margin-top:10px;">
                     <ul>
-                        <li><a href="index.php">Home</a></li><!--Trang chủ -->
+                        <li><a href="../index.php">Home</a></li><!--Trang chủ -->
                         <li>
                             <a href="#">Top</a><!--Top -->
                             <ul class="sub-menu">
@@ -74,7 +74,7 @@ if (isset($_GET['id'])) {
                                 <li><a href="thucdon_2.php?id_sanpham=3">Liliwyun</a></li>
                             </ul>
                         </li>
-                        <li><a href="AboutUs/AboutUs.php">About us</a></li><!--About us -->
+                        <li><a href="../AboutUs/AboutUs.php">About us</a></li><!--About us -->
                     </ul>
                 </div>
         
@@ -110,7 +110,7 @@ if (isset($_GET['id'])) {
             </div>
             
             
-            <li><a href="view/cart.php" style="text-decoration:none; " ><i class="fas fa-shopping-bag"></i></a> <?php
+            <li><a href="cart.php" style="text-decoration:none; " ><i class="fas fa-shopping-bag"></i></a> <?php
                         $cart = [];
                         if (isset($_COOKIE['cart'])) {
                             $json = $_COOKIE['cart'];
@@ -364,7 +364,7 @@ padding-right: 30px;
                                 </script>
                                 
                                 <div class="number"style="padding-top:10px;margin-left:10px;">
-                                    <span class="number-buy"">Số lượng</span>
+                                    <span class="number-buy">Số lượng</span>
                                     <input id="num" type="number" value="1" min="1" onchange="updatePrice()">
                                 </div>
 
@@ -441,7 +441,7 @@ padding-right: 30px;
 <script type="text/javascript">
     function addToCart(id) {
         var num = document.querySelector('#num').value; // số lượng
-        $.post('api/cookie.php', {
+        $.post('../api/cookie.php', {
             'action': 'add',
             'id': id,
             'num': num

@@ -26,33 +26,33 @@
 </head>
 <!-----------------------HEARDER ----------------------------------------->
 <header>
-        <a href="/Web/view/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
+        <a href="/Web/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
         <div id="menu" style="margin-top:10px;">
                     <ul>
-                        <li><a href="index.php">Home</a></li><!--Trang chủ -->
+                        <li><a href="/Web/index.php">Home</a></li><!--Trang chủ -->
                         <li>
                             <a href="#">Top</a><!--Top -->
                             <ul class="sub-menu">
-                                <li><a href="thucdon.php?id_category=1">Hoodie</a></li>
-                                <li><a href="thucdon.php?id_category=2">T-Shirt</a></li>
+                                <li><a href="view/thucdon.php?id_category=1">Hoodie</a></li>
+                                <li><a href="view/thucdon.php?id_category=2">T-Shirt</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#">Bottom</a><!--Bottom -->
                             <ul class="sub-menu">
-                                <li><a href="thucdon.php?id_category=4">Trouser</a></li>
-                                <li><a href="thucdon.php?id_category=3">Short</a></li>
+                                <li><a href="view/thucdon.php?id_category=4">Trouser</a></li>
+                                <li><a href="view/thucdon.php?id_category=3">Short</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#">Collection</a><!--Collection -->
                             <ul class="sub-menu">
-                                <li><a href="thucdon_2.php?id_sanpham=1">One piece</a></li>
-                                <li><a href="thucdon_2.php?id_sanpham=2">Spring of the Y</a></li>
-                                <li><a href="thucdon_2.php?id_sanpham=3">Liliwyun</a></li>
+                                <li><a href="view/thucdon_2.php?id_sanpham=1">One piece</a></li>
+                                <li><a href="view/thucdon_2.php?id_sanpham=2">Spring of the Y</a></li>
+                                <li><a href="view/thucdon_2.php?id_sanpham=3">Liliwyun</a></li>
                             </ul>
                         </li>
-                        <li><a href="../AboutUs/AboutUs.php">About us</a></li><!--About us -->
+                        <li><a href="AboutUs/AboutUs.php">About us</a></li><!--About us -->
                     </ul>
                 </div>
 
@@ -89,7 +89,7 @@
             </div>
             
             
-            <li><a href="./view/cart.php" style="text-decoration:none; " ><i class="fas fa-shopping-bag"></i></a> <?php
+            <li><a href="view/cart.php" style="text-decoration:none; " ><i class="fas fa-shopping-bag"></i></a> <?php
                         $cart = [];
                         if (isset($_COOKIE['cart'])) {
                             $json = $_COOKIE['cart'];

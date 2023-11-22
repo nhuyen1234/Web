@@ -5,10 +5,10 @@
 	}
  */ ?>
 
-<?php require_once('../database/config.php');
-require_once('../database/dbhelper.php');?>
+<?php require_once('database/config.php');
+require_once('database/dbhelper.php');?>
 <?php 
-include("../Layout/header.php"); 
+include("Layout/header.php"); 
 ?>
 
 
@@ -33,8 +33,8 @@ include("../Layout/header.php");
                         foreach ($productList as $item) {
                             echo '
                                 <div class="col">
-                                    <a href="details.php?id=' . $item['product_id'] . '">
-                                        <img class="thumbnail" src="../admin/product/' . $item['thumbnail'] . '" alt="">
+                                    <a href="view/details.php?id=' . $item['product_id'] . '">
+                                        <img class="thumbnail" src="admin/product/' . $item['thumbnail'] . '" alt="">
                                         <div class="title">
                                             <p>' . $item['title'] . '</p>
                                         </div>
@@ -43,11 +43,11 @@ include("../Layout/header.php");
                                         </div>
                                         <div class="more">
                                             <div class="star">
-                                                <img src="../images/icon/icon-star.svg" alt="">
+                                                <img src="images/icon/icon-star.svg" alt="">
                                                 <span>5.0</span>
                                             </div>
                                             <div class="time">
-                                                <img src="../images/icon/icon-clock.svg" alt="">
+                                                <img src="images/icon/icon-clock.svg" alt="">
                                                 <span>100 comment</span>
                                             </div>
                                         </div>
@@ -65,7 +65,7 @@ include("../Layout/header.php");
             <h2>
                 <span>SPRING OF THE ¥ </span>
             </h2>
-            <a href="thucdon_2.php?id_sanpham=2"><button>Mua ngay </button><!--nút mua hàng --></a>
+            <a href="view/thucdon_2.php?id_sanpham=2"><button>Mua ngay </button><!--nút mua hàng --></a>
         </div>
     </div>
 
@@ -74,7 +74,7 @@ include("../Layout/header.php");
 <!--------------------BANNER LILIWYUN--------------------------- -->
     <div id="banner3"><!--banner3 banner liliwyun  -->
         <div class="box-left" >
-            <a href="thucdon_2.php?id_sanpham=3"><button>Mua ngay </button><!--nút mua hàng --></a>
+            <a href="view/thucdon_2.php?id_sanpham=3"><button>Mua ngay </button><!--nút mua hàng --></a>
         </div>
     </div>
 
@@ -115,7 +115,7 @@ include("../Layout/header.php");
 <!--------------------BANNER SALE--------------------------- -->
     <div id="banner4"><!--banner4 banner sale off  -->
         <div class="box-left" >
-            <a href="dangky.php"><button>SIGN UP FOR FREE →</button><!--nút đăng ký --></a>
+            <a href="view/dangky.php"><button>SIGN UP FOR FREE →</button><!--nút đăng ký --></a>
         </div>
     </div>
 <style>     /* ------------------------Banner one piece------------------------------*/
@@ -522,4 +522,4 @@ section.main section.recently .product-recently .row .col .more .time img {
 </style>
 
 
-<?php require_once('../Layout/footer.php'); ?>
+<?php require_once('Layout/footer.php'); ?>

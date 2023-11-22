@@ -350,12 +350,12 @@ require_once('../utils/utility.php');
                                         <td class="b-500 red">' . number_format($item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
                                         <td width="100px">' . $num . '</td>
                                         <td class="b-500 red">' . number_format($num * $item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
-                                        
+                                        <td>
+                                            <button class="btn btn-danger" onclick="deleteCart(' . $item['id'] . ')">Xoá</button>
+                                        </td>
                                     </tr>
                                     ';
-                                    // <td>
-                                    //     <button class="btn btn-danger" onclick="deleteCart(' . $item['id'] . ')">Xoá</button>
-                                    // </td>
+                                    
                                 }
                                 ?>
                             </tbody>
@@ -370,7 +370,7 @@ require_once('../utils/utility.php');
     </div>
     <script type="text/javascript">
         function deleteCart(id) {
-            $.post('api/cookie.php', {
+            $.post('../api/cookie.php', {
                 'action': 'delete',
                 'id': id
             }, function(data) {

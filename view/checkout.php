@@ -53,7 +53,7 @@ if (count($idList) > 0) {
 <a href="/Web/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
   <div id="menu" style="margin-top:10px;">
                     <ul>
-                        <li><a href="index.php">Home</a></li><!--Trang chủ -->
+                        <li><a href="../index.php">Home</a></li><!--Trang chủ -->
                         <li>
                             <a href="#">Top</a><!--Top -->
                             <ul class="sub-menu">
