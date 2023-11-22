@@ -110,7 +110,7 @@ if (isset($_GET['id'])) {
             </div>
             
             
-            <li><a href="view/cart.php" style="text-decoration:none; " ><i class="fas fa-shopping-bag"></i></a> <?php
+            <li><a href="cart.php" style="text-decoration:none; " ><i class="fas fa-shopping-bag"></i></a> <?php
                         $cart = [];
                         if (isset($_COOKIE['cart'])) {
                             $json = $_COOKIE['cart'];
@@ -441,7 +441,7 @@ padding-right: 30px;
 <script type="text/javascript">
     function addToCart(id) {
         var num = document.querySelector('#num').value; // số lượng
-        $.post('api/cookie.php', {
+        $.post('../api/cookie.php', {
             'action': 'add',
             'id': id,
             'num': num
