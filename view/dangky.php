@@ -12,7 +12,7 @@
 		if($sql_dangky){
 			if($tenkhachhang!="" && $tendangnhap!="" && $email!="" && $diachi!="" && $dienthoai!="" && $matkhau!=""){
                 echo '<script>alert("Đăng ký thành công.");
-                window.location.href="index.php";
+                window.location.href="../index.php";
                 </script>';
                 
 			} 
