@@ -1,5 +1,5 @@
 <?php
-require_once('database/dbhelper.php');
+require_once('../database/dbhelper.php');
 
 if (!empty($_POST)) {
     $cart = [];
@@ -62,7 +62,7 @@ if (!empty($_POST)) {
     } else {
         $cartList = [];
     }
-    $status = 'Đang chuẩn bị';
+    $status = 'Đặt hàng thành công';
     
     foreach ($cartList as $item) {
         $num = 0;

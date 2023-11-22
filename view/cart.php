@@ -1,4 +1,50 @@
 
+
+<?php
+require_once('../database/dbhelper.php');
+require_once('../utils/utility.php');
+
+
+    $cart = [];
+    if (isset($_COOKIE['cart'])) {
+        $json = $_COOKIE['cart'];
+        $cart = json_decode($json, true);
+    }
+    $idList = [];
+    foreach ($cart as $item) {
+        $idList[] = $item['id'];
+    }
+    if (count($idList) > 0) {
+        $idList = implode(',', $idList); // chuyeern
+        //[2, 5, 6] => 2,5,6
+
+        $sql = "select * from product where id in ($idList)";
+        $cartList = executeResult($sql);
+    } else {
+        $cartList = [];
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" href="css/index.css"> -->
+  <link rel="shortcut icon" type="image/png" href="/Web/admin/product/uploads/avt3.png"/>
+    <link rel="stylesheet" href="plugin/fontawesome/css/all.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <title>Giỏ hàng</title>
+</head>
 <?php
             session_start();
             if(isset($_GET['dangxuat'])&&$_GET['dangxuat']==1){
@@ -6,18 +52,7 @@
                 header('Location:index.php');
             }
 ?>
-<?php
-require_once('database/dbhelper.php');
-require_once('utils/utility.php');
-
-// $order_id = $order_details_List['order_id'];
-// $product_id = $order_details_List['product_id'];
-// $num = $order_details_List['num'];
-// $price = $order_details_List['price'];
-?>
-<!DOCTYPE html>
-<html lang="en">
-
+<?php require_once('../database/dbhelper.php')?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,29 +67,28 @@ require_once('utils/utility.php');
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="plugin/fontawesome/css/all.css">
     <link rel="stylesheet" href="./login.css">
-  <link rel="shortcut icon" type="image/png" href="/Web/admin/product/uploads/avt3.png"/>
     <script src="https://kit.fontawesome.com/1147679ae7.js" crossorigin="anonymous"></script><!--link lấy icon -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <title>Lịch sử giao hàng</title>
+    <title>Đăng nhập</title>
 </head>
 <!-----------------------HEARDER ----------------------------------------->
 <header>
-<a href="/Web/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
-  <div id="menu" style="margin-top:10px;">
+        <a href="/Web/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
+        <div id="menu" style="margin-top:10px;">
                     <ul>
-                        <li><a href="index.php">Home</a></li><!--Trang chủ -->
+                        <li><a href="index.php">Trang chủ</a></li><!--Trang chủ -->
                         <li>
                             <a href="#">Top</a><!--Top -->
                             <ul class="sub-menu">
-                                <li><a href="thucdon.php?id_category=1">Hoodie</a></li>
-                                <li><a href="thucdon.php?id_category=2">T-Shirt</a></li>
+                                <li><a href="thucdon.php?id_category=1">Áo khoác</a></li>
+                                <li><a href="thucdon.php?id_category=2">Áo thun</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#">Bottom</a><!--Bottom -->
                             <ul class="sub-menu">
-                                <li><a href="thucdon.php?id_category=4">Trouser</a></li>
-                                <li><a href="thucdon.php?id_category=3">Short</a></li>
+                                <li><a href="thucdon.php?id_category=4">Quần dài</a></li>
+                                <li><a href="thucdon.php?id_category=3">Quần ngắn</a></li>
                             </ul>
                         </li>
                         <li>
@@ -65,7 +99,7 @@ require_once('utils/utility.php');
                                 <li><a href="thucdon_2.php?id_sanpham=3">Liliwyun</a></li>
                             </ul>
                         </li>
-                        <li><a href="AboutUs/AboutUs.php">About us</a></li><!--About us -->
+                        <li><a href="../AboutUs/AboutUs.php">About us</a></li><!--About us -->
                     </ul>
                 </div>
 
@@ -75,14 +109,14 @@ require_once('utils/utility.php');
             
             <div class="login"> 
                 <?php
-                
+                // Sửa thông tin đăng nhập Admin và user
                 if(isset($_SESSION['submit'])) {
                     $user_admin = $_SESSION['submit'];
-                            if($user_admin == 'Admin_Chu') {
+                            if($user_admin == 'Admin_Nyen') {
                                 
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
                                 <div class="logout">
-                                <a href="#"><i class="fas fa-user-edit"></i>Admin</a> <br>                            
+                                <a href="/Web/admin/login.php"><i class="fas fa-user-edit"></i>Admin</a> <br>                             
                                 <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                                 </div>';
                                                         }
@@ -206,6 +240,7 @@ require_once('utils/utility.php');
     border: 1px solid grey;
     border-radius: 5px;
     padding: 10px 0;
+    background-color: white;
     }
     .login .logout a{
     color: black;
@@ -215,6 +250,7 @@ require_once('utils/utility.php');
     }
     .login .logout a:hover{
     opacity: 0.8;
+    
     }
     #menu {
         list-style:none;
@@ -258,123 +294,96 @@ require_once('utils/utility.php');
         display:block;
     }
 </style>
-
 <body>
     <div id="wrapper">
         
-
         <!-- END HEADR -->
-        <main>
+        <main style="padding-bottom: 4rem;">
             <section class="cart">
                 <div class="container-top">
                     <div class="panel panel-primary">
                         <div class="panel-heading" style="padding: 1rem 0;">
-                            <ul class="nav nav-tabs">
+                            <ul class="nav nav-tabs" style="float: left; padding : 50px;">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="cart.php">Giỏ hàng</a>
+                                    <a class="nav-link active" href="cart.php">Giỏ hàng</a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link active" href="dashboard.php">Lịch sử mua hàng</a>
+                                    <a class="nav-link" href="history.php">Lịch sử mua hàng</a>
                                 </li>
                             </ul>
-                            <h2 style="padding-top:8rem" class="">Lịch sử mua hàng</h2>
+                            
                         </div>
+                        <h2 style="padding-top:200px" class="">Giỏ hàng</h2>
                         <div class="panel-body"></div>
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr style="font-weight: 500;text-align: center;">
                                     <td width="50px">STT</td>
                                     <td>Ảnh</td>
-                                    <td>Tên sản phẩm</td>
+                                    <td>Tên Sản Phẩm</td>
                                     <td>Giá</td>
                                     <td>Số lượng</td>
-                                    <td>Tổng cộng</td>
-                                    <td>Trạng thái</td>
-                                    <!-- <td width="50px"></td> -->
+                                    <td>Tổng tiền</td>
+                                    <td width="50px"></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-
-                                if (isset($_COOKIE['tendangnhap']) && $user_admin == 'Admin_Chu' ) {
-                                    $tendangnhap = $_COOKIE['tendangnhap'];
-
-                                    $sql = "SELECT * FROM tbl_admin WHERE tendangnhap = '$tendangnhap'";
-                                    $user = executeResult($sql); // in ra 1 dòng 
-                                    foreach ($user as $item) {
-                                        $userId = $item['id_admin'];
+                                $count = 0;
+                                $total = 0;
+                                foreach ($cartList as $item) {
+                                    $num = 0;
+                                    foreach ($cart as $value) {
+                                        if ($value['id'] == $item['id']) {
+                                            $num = $value['num'];
+                                            break;
+                                        }
                                     }
-
-                                    $sql = "SELECT * from order_details, product where product.id=order_details.product_id AND order_details.id_user = '$userId' ORDER BY order_id DESC";
-                                    $order_details_List = executeResult($sql);
-                                    $total = 0;
-                                    $count = 0;
-                                    // $sql = 'SELECT * FROM user where username = $username';
-                                    foreach ($order_details_List as $item) {
-                                        $orderstatus = orderstatus($item['status']);
-                                        echo '
-                                        <tr style="text-align: center;">
-                                            <td width="50px">' . (++$count) . '</td>
-                                            <td style="text-align:center">
-                                                <img width="50px" src="admin/product/' . $item['thumbnail'] . '">
-                                            </td>
-                                            <td>' . $item['title'] . '</td>
-                                            <td class="b-500 orange">' . number_format($item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
-                                            <td width="100px">' . $item['num'] . '</td>
-                                            <td class="b-500 red">' . number_format($item['num'] * $item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
-                                            <td style="color:green; font-weight:600;">' .$orderstatus. order_status($item['status']) . '</td>
-                                        </tr>
-                                        ';
-                                    }
-                                }
-								//fix-code
-								if(isset($_COOKIE['tendangnhap'])) {
-                                    $tendangnhap = $_COOKIE['tendangnhap'];
-
-                                    $sql = "SELECT * FROM tbl_dangky WHERE tendangnhap = '$tendangnhap'";
-                                    $user = executeResult($sql); // in ra 1 dòng 
-                                    foreach ($user as $item) {
-                                        $userId = $item['id_dangky'];
-                                    }
-                                    
-                                    $sql = "SELECT * from order_details, product where product.id=order_details.product_id AND order_details.id_user = id_user ORDER BY order_id DESC";
-                                    $order_details_List = executeResult($sql);
-                                    $total = 0;
-                                    $count = 0;
-                                    
-                                    // $sql = 'SELECT * FROM user where username = $username';
-                                    foreach ($order_details_List as $item) {
-                                        $orderstatus = orderstatus($item['status']);
-                                        echo '
-                                        <tr style="text-align: center;">
-                                            <td width="50px">' . (++$count) . '</td>
-                                            <td style="text-align:center">
-                                                <img width="50px" src="admin/product/' . $item['thumbnail'] . '">
-                                            </td>
-                                            <td>' . $item['title'] . '</td>
-                                            <td class="b-500 orange">' . number_format($item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
-                                            <td width="100px">' . $item['num'] . '</td>
-                                            <td class="b-500 red">' . number_format($item['num'] * $item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
-                                            <td style="color:green; font-weight:600;">' .$orderstatus. order_status($item['status']) . '</td>
-                                        </tr>
-                                        ';
-                                    }
+                                    $total += $num * $item['price'];
+                                    echo '
+                                    <tr style="text-align: center;">
+                                        <td width="50px">' . (++$count) . '</td>
+                                        <td style="text-align:center">
+                                            <img src="../admin/product/' . $item['thumbnail'] . '" alt="" style="width: 50px">
+                                        </td>
+                                        <td>' . $item['title'] . '</td>
+                                        <td class="b-500 red">' . number_format($item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
+                                        <td width="100px">' . $num . '</td>
+                                        <td class="b-500 red">' . number_format($num * $item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
+                                        
+                                    </tr>
+                                    ';
+                                    // <td>
+                                    //     <button class="btn btn-danger" onclick="deleteCart(' . $item['id'] . ')">Xoá</button>
+                                    // </td>
                                 }
                                 ?>
                             </tbody>
                         </table>
+                        <p>Tổng đơn hàng: <span class="red bold"><?= number_format($total, 0, ',', '.') ?><span> VNĐ</span></span></p>
+                        <a href="checkout.php" onclick="checkLogin()"><button class="btn btn-success">Thanh toán</button></a>
                     </div>
                 </div>
             </section>
         </main>
         
     </div>
+    <script type="text/javascript">
+        function deleteCart(id) {
+            $.post('api/cookie.php', {
+                'action': 'delete',
+                'id': id
+            }, function(data) {
+                location.reload()
+            })
+        }
+
+        function checkLogin() {
+
+        }
     </script>
 </body>
 <style>
-    main{
-        padding-bottom: 4rem;
-    }
     .b-500 {
         font-weight: 500;
     }
@@ -385,10 +394,6 @@ require_once('utils/utility.php');
 
     .red {
         color: rgba(207, 16, 16, 0.815);
-    }
-
-    .orange {
-        color: #a25437;
     }
 </style>
 
@@ -404,10 +409,10 @@ require_once('utils/utility.php');
     </div> 
     <div class="col">
         <h4>THÔNG TIN LIÊN HỆ</h4><!--Thông tin liên hệ -->
-        <p>Tuyển dụng:<a href ="liên kết "> https://www.facebook.com/DirtyCoins.VN/ </a> </p>
-        <p>Website:<a href ="liên kết "> https://dirtycoins.vn/ </a></p>
-        <p>Liên hệ CSKH: support@<a href ="liên kết "> https://dirtycoins.vn/lien-he </a></p>
-        <p>For business: contact@<a href ="liên kết "> 0933 800 190 - 1900252557 </a></p>
+        <p>Tuyển dụng:<a href ="https://www.facebook.com/DirtyCoins.VN/"> https://www.facebook.com/DirtyCoins.VN/ </a> </p>
+        <p>Website:<a href ="https://dirtycoins.vn/"> https://dirtycoins.vn/ </a></p>
+        <p>Liên hệ CSKH: support@<a href ="https://dirtycoins.vn/lien-he"> https://dirtycoins.vn/lien-he </a></p>
+        <p>For business: contact@<a href ="0933 800 190 - 1900252557"> 0933 800 190 - 1900252557 </a></p>
     </div>
     <div class="col">
         <h4>FOLLOW US ON SOCIAL MEDIA</h4><!--Follow us on social media-->
@@ -462,5 +467,4 @@ footer li{ /*chỉnh icon fb,instagram,youtube*/
     body {
    width: 1500px;
     }}
-
 </style>

@@ -36,7 +36,7 @@ if (!empty($_POST['name'])) {
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql = 'select * from category where id=' . $id;
-    $category = executeSingleResult($sql);
+    $category = executeSingleResult_query($sql);
     if ($category != null) {
         $name = $category['name'];
     }

@@ -5,10 +5,10 @@
 	}
  */ ?>
 
-<?php require_once('database/config.php');
-require_once('database/dbhelper.php');?>
+<?php require_once('../database/config.php');
+require_once('../database/dbhelper.php');?>
 <?php 
-include("Layout/header.php"); 
+include("../Layout/header.php"); 
 ?>
 
 
@@ -34,7 +34,7 @@ include("Layout/header.php");
                             echo '
                                 <div class="col">
                                     <a href="details.php?id=' . $item['product_id'] . '">
-                                        <img class="thumbnail" src="admin/product/' . $item['thumbnail'] . '" alt="">
+                                        <img class="thumbnail" src="../admin/product/' . $item['thumbnail'] . '" alt="">
                                         <div class="title">
                                             <p>' . $item['title'] . '</p>
                                         </div>
@@ -43,11 +43,11 @@ include("Layout/header.php");
                                         </div>
                                         <div class="more">
                                             <div class="star">
-                                                <img src="images/icon/icon-star.svg" alt="">
+                                                <img src="../images/icon/icon-star.svg" alt="">
                                                 <span>5.0</span>
                                             </div>
                                             <div class="time">
-                                                <img src="images/icon/icon-clock.svg" alt="">
+                                                <img src="../images/icon/icon-clock.svg" alt="">
                                                 <span>100 comment</span>
                                             </div>
                                         </div>
@@ -522,4 +522,4 @@ section.main section.recently .product-recently .row .col .more .time img {
 </style>
 
 
-<?php require_once('Layout/footer.php'); ?>
+<?php require_once('../Layout/footer.php'); ?>

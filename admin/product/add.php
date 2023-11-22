@@ -120,7 +120,7 @@ if (!empty($_POST['title'])) {
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql = 'select * from product where id=' . $id;
-    $product = executeSingleResult($sql);
+    $product = executeSingleResult_query($sql);
     if ($product != null) {
         $title = $product['title'];
         $price = $product['price'];

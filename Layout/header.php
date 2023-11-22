@@ -26,7 +26,7 @@
 </head>
 <!-----------------------HEARDER ----------------------------------------->
 <header>
-        <a href="/Web/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
+        <a href="/Web/view/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
         <div id="menu" style="margin-top:10px;">
                     <ul>
                         <li><a href="index.php">Home</a></li><!--Trang chủ -->
@@ -52,7 +52,7 @@
                                 <li><a href="thucdon_2.php?id_sanpham=3">Liliwyun</a></li>
                             </ul>
                         </li>
-                        <li><a href="AboutUs/AboutUs.php">About us</a></li><!--About us -->
+                        <li><a href="../AboutUs/AboutUs.php">About us</a></li><!--About us -->
                     </ul>
                 </div>
 
@@ -89,7 +89,7 @@
             </div>
             
             
-            <li><a href="cart.php" style="text-decoration:none; " ><i class="fas fa-shopping-bag"></i></a> <?php
+            <li><a href="./view/cart.php" style="text-decoration:none; " ><i class="fas fa-shopping-bag"></i></a> <?php
                         $cart = [];
                         if (isset($_COOKIE['cart'])) {
                             $json = $_COOKIE['cart'];

@@ -13,7 +13,7 @@ if (!empty($_POST)) {
 					$id = $_POST['id'];
 
 					$sql = 'delete from category where id = '.$id;
-					execute($sql);
+					execute_query($sql);
 				}
 				break;
 		}

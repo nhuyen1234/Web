@@ -67,7 +67,7 @@
 </head>
 <!-----------------------HEARDER ----------------------------------------->
 <header>
-<a href="/Web/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
+<a href="/Web/view/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
   <div id="menu" style="margin-top:10px;">
                     <ul>
                         <li><a href="index.php">Home</a></li><!--Trang chủ -->
@@ -458,7 +458,8 @@ form .input-box span.details{
  }
  form .button input:hover{background: orange;}
 
-</style></body>
+</style>
+</body>
 </html>
 <!--------------------FOOTER--------------------------- -->
 <footer class="section-p1"><!--mục footer -->

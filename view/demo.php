@@ -13,15 +13,15 @@
     <div class="container flex">
       <div class="left">
         <div class="main_image">
-          <img src="image/p43.png" class="slide">
+          <img src="./image/p43.png" class="slide">
         </div>
         <div class="option flex">
-          <img src="image/p43.png" onclick="img('image/p43.png')">
-          <img src="image/p44.png" onclick="img('image/p44.png')">
-          <img src="image/p45.png" onclick="img('image/p45.png')">
-          <img src="image/p46.png" onclick="img('image/p46.png')">
-          <img src="image/p47.png" onclick="img('image/p47.png')">
-          <img src="image/p48.png" onclick="img('image/p48.png')">
+          <img src="../image/p43.png" onclick="img('../image/p43.png')">
+          <img src="../image/p44.png" onclick="img('../image/p44.png')">
+          <img src="../image/p45.png" onclick="img('../image/p45.png')">
+          <img src="../image/p46.png" onclick="img('../image/p46.png')">
+          <img src="../image/p47.png" onclick="img('../image/p47.png')">
+          <img src="../image/p48.png" onclick="img('../image/p48.png')">
         </div>
       </div>
       <div class="right">
@@ -66,12 +66,12 @@
 <h4 class="sanpham">You Might Also Like</h4>
 <ul id="list-products">
   <div class="item">
-      <img src="image/p7.png" width="300" alt="">
+      <img src="../image/p7.png" width="300" alt="">
       <div class="name">DC x OP Brook Hoodie - Blue</div>
       <div class="price">699.000₫</div>
   </div>
   <div class="item">
-    <img src="image/p1.png" width="300" alt="">
+    <img src="../image/p1.png" width="300" alt="">
     <div class="name">DC x OP Luffy Raglan Hoodie - Multicolor</div>
     <div class="price">720.000₫</div>
 </div>

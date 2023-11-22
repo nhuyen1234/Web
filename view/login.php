@@ -1,8 +1,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <?php
 	session_start();
-	require_once('config.php');
-    require_once('database/dbhelper.php');
+	require_once('../view/config.php');
+    require_once('../database/dbhelper.php');
 	if(isset($_POST['submit'])){
         $user_admin = $_POST['tendangnhap'];
         $pass_admin = $_POST['matkhau'];
@@ -26,7 +26,7 @@
         elseif($count_admin > 0){
             $_SESSION['submit'] = $user_admin;
             echo '<script>alert("Xin chào Admin ^^");
-                window.location.href="index.php";
+                window.location.href="../admin/index.php";
                 </script>';
           	$tendangnhap = trim(strip_tags($_POST['tendangnhap']));
             $matkhau = trim(strip_tags($_POST['matkhau']));
@@ -59,7 +59,7 @@
   
 </head>
 <header>
-<a href="/Web/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
+<a href="/Web/view/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
   <div id="menu" style="margin-top:10px;">
                     <ul>
                         <li><a href="index.php">Home</a></li><!--Trang chủ -->
@@ -85,7 +85,7 @@
                                 <li><a href="thucdon_2.php?id_sanpham=3">Liliwyun</a></li>
                             </ul>
                         </li>
-                        <li><a href="AboutUs/AboutUs.php">About us</a></li><!--About us -->
+                        <li><a href="../AboutUs/AboutUs.php">About us</a></li><!--About us -->
                     </ul>
                 </div>
         

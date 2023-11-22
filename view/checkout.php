@@ -6,9 +6,9 @@
             }
 ?>
 <?php
-require_once('database/dbhelper.php');
-require_once('utils/utility.php');
-require_once('api/checkout-form.php');
+require_once('../database/dbhelper.php');
+require_once('../utils/utility.php');
+require_once('../api/checkout-form.php');
 $cart = [];
 if (isset($_COOKIE['cart'])) {
     $json = $_COOKIE['cart'];
@@ -76,7 +76,7 @@ if (count($idList) > 0) {
                                 <li><a href="thucdon_2.php?id_sanpham=3">Liliwyun</a></li>
                             </ul>
                         </li>
-                        <li><a href="AboutUs/AboutUs.php">About us</a></li><!--About us -->
+                        <li><a href="../AboutUs/AboutUs.php">About us</a></li><!--About us -->
                     </ul>
                 </div>
 
@@ -351,7 +351,7 @@ if (count($idList) > 0) {
                                     <tr style="text-align: center;">
                                         <td width="50px">' . (++$count) . '</td>
                                         <td style="text-align:center; display:flex">
-                                            <img src="admin/product/' . $item['thumbnail'] . '" alt="" style="width: 50px;margin:0 1rem 0 1rem;"> <span>' . $item['title'] . '</span>
+                                            <img src="../admin/product/' . $item['thumbnail'] . '" alt="" style="width: 50px;margin:0 1rem 0 1rem;"> <span>' . $item['title'] . '</span>
                                         </td>
                                         <td width="100px">' . $num . '</td>
                                         <td class="b-500 red">' . number_format($num * $item['price'], 0, ',', '.') . '<span> VNĐ</span></td>

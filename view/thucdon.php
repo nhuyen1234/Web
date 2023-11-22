@@ -1,32 +1,11 @@
 <?php
-header("content-type:text/html; charset=UTF-8");
-?>
-<?php
             session_start();
             if(isset($_GET['dangxuat'])&&$_GET['dangxuat']==1){
                 unset($_SESSION['submit']);
                 header('Location:index.php');
             }
 ?>
-<?php
-include('config.php');
-?>
-<?php
-require_once('database/config.php');
-require_once('dbhelper.php');
-require_once('utility.php');
-// Lấy id từ trang index.php truyền sang rồi hiển thị nó
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = 'select * from product where id=' . $id;
-    $product = executeSingleResult($sql);
-    // Kiểm tra nếu ko có id sp đó thì trả về index.php
-    if ($product == null) {
-        header('Location: index.php');
-        die();
-    }
-}
-?>
+<?php require_once('../database/dbhelper.php')?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,26 +23,27 @@ if (isset($_GET['id'])) {
   <link rel="shortcut icon" type="image/png" href="/Web/admin/product/uploads/avt3.png"/>
     <script src="https://kit.fontawesome.com/1147679ae7.js" crossorigin="anonymous"></script><!--link lấy icon -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <title>Details</title>
+    <title>Danh mục sản phẩm</title>
+    
 </head>
 <!-----------------------HEARDER ----------------------------------------->
 <header>
-<a href="/Web/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
-  <div id="menu" style="margin-top:10px;">
+        <img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO -->
+        <div id="menu" style="margin-top:10px;">
                     <ul>
-                        <li><a href="index.php">Home</a></li><!--Trang chủ -->
+                        <li><a href="view/index.php">Trang chủ</a></li><!--Trang chủ -->
                         <li>
                             <a href="#">Top</a><!--Top -->
                             <ul class="sub-menu">
-                                <li><a href="thucdon.php?id_category=1">Hoodie</a></li>
-                                <li><a href="thucdon.php?id_category=2">T-Shirt</a></li>
+                                <li><a href="thucdon.php?id_category=1">Áo khoác</a></li>
+                                <li><a href="thucdon.php?id_category=2">Áo thun</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#">Bottom</a><!--Bottom -->
                             <ul class="sub-menu">
-                                <li><a href="thucdon.php?id_category=4">Trouser</a></li>
-                                <li><a href="thucdon.php?id_category=3">Short</a></li>
+                                <li><a href="thucdon.php?id_category=4">Quần dài</a></li>
+                                <li><a href="thucdon.php?id_category=3">Quần ngắn</a></li>
                             </ul>
                         </li>
                         <li>
@@ -74,9 +54,10 @@ if (isset($_GET['id'])) {
                                 <li><a href="thucdon_2.php?id_sanpham=3">Liliwyun</a></li>
                             </ul>
                         </li>
-                        <li><a href="AboutUs/AboutUs.php">About us</a></li><!--About us -->
+                        <li><a href="../AboutUs/AboutUs.php">About us</a></li><!--About us -->
                     </ul>
                 </div>
+
         
         <div class="other"><!--Other -->
             
@@ -86,11 +67,11 @@ if (isset($_GET['id'])) {
                 // Sửa thông tin đăng nhập Admin và user
                 if(isset($_SESSION['submit'])) {
                     $user_admin = $_SESSION['submit'];
-                            if($user_admin == 'Admin_Chu') {
+                            if($user_admin == 'Admin_Ninnin') {
                                 
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
                                 <div class="logout">
-                                <a href="/Web/admin/login.php"><i class="fas fa-user-edit"></i>Admin</a> <br>                                                                                
+                                <a href="/Web/admin/login.php"><i class="fas fa-user-edit"></i>Admin</a> <br>                             
                                 <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                                 </div>';
                                                         }
@@ -266,149 +247,47 @@ if (isset($_GET['id'])) {
         display:block;
     }
 </style>
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v11.0&appId=264339598396676&autoLogAppEvents=1" nonce="8sTfFiF4"></script>
-<!-- END HEADR -->
 <main>
-    <div  class="container">
-        <div style="padding-top: 100px;width:1300px;"id="ant-layout">
+    <div class="container">
+        <div style="padding-top: 100px;" id="ant-layout">
         <section class="search-quan">
                 <i class="fas fa-search"></i>
-                <form action="thucdon.php" method="GET" >
+                <form action="thucdon.php" method="GET">
                     <input name="search" type="text" placeholder="Tìm đồ khác">
                 </form>
             </section>
         </div>
-        <!-- <div class="bg-grey">
-
-        </div> -->
         <!-- END LAYOUT  -->
         <section class="main">
-            <section class="oder-product" >
+            <?php
+            
+            //switch
+            if (isset($_GET['id_category'])) {
+                $id_category = trim(strip_tags($_GET['id_category']));
+            } else {
+                $id_category = 0;
+            }
+            ?>
+            <section class="recently">
                 <div class="title">
-                    <section class="main-order">
-                        <h1><?= $product['title'] ?></h1>
-                        <div class="box">
-                          <div class="left" >
-                            <li >
-                              <div class="main_image" >
-                                <img src="<?='admin/product/'.$product['thumbnail'] ?>" alt="">
-                              </div>
-                              <div class="main_image">
-                                <img src="<?='admin/product/'.$product['thumbnail_1'] ?>" alt="">
-                              </div>
-                              <div class="main_image">
-                                <img src="<?='admin/product/'.$product['thumbnail_2'] ?>" alt="">
-                              </div>
-                            </li>
-
-                            <li>
-                              <div class="main_image">
-                                <img src="<?='admin/product/'.$product['thumbnail_3'] ?>" alt="">
-                              </div>
-                              <div class="main_image">
-                                <img src="<?='admin/product/'.$product['thumbnail_4'] ?>" alt="">
-                              </div>
-                              <div class="main_image">
-                                <img src="<?='admin/product/'.$product['thumbnail_5'] ?>" alt="">
-                              </div>
-                            </li>
-
-                          </div>
-<style>
-.left {
-display: flex;
-padding-right: 30px;
-
-}
-.main_image {
-  width: 420;
-  height: 400;
-  margin-bottom:100px;
-  margin-top: 100px;
-  margin-left:-10px;
- margin-right: 30px;
-  
-}
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-</style>
-
-
-
-
-                            
-                            <div class="about">
-                                <p style="padding-top:105px;margin-left:10px; width:300px"><?= $product['content'] ?></p>
-                                <div id="myDIV"style="padding-top:10px;margin-left:10px;">
-                                    <button class="btn">S</button>
-                                    <button class="btn active">M</button>
-                                    <button class="btn">L</button>
-                                
-                                </div>
-                                
-                                <script>
-                                // Add active class to the current button (highlight it)
-                                var header = document.getElementById("myDIV");
-                                var btns = header.getElementsByClassName("btn");
-                                for (var i = 0; i < btns.length; i++) {
-                                    btns[i].addEventListener("click", function() {
-                                    var current = document.getElementsByClassName("active");
-                                    current[0].className = current[0].className.replace(" active", "");
-                                    this.className += " active";
-                                    });
-                                }
-                                </script>
-                                
-                                <div class="number"style="padding-top:10px;margin-left:10px;">
-                                    <span class="number-buy"">Số lượng</span>
-                                    <input id="num" type="number" value="1" min="1" onchange="updatePrice()">
-                                </div>
-
-                                <p class="price"style="padding-top:70px;margin-left:10px;">Giá: <span id="price"><?= number_format($product['price'], 0, ',', '.') ?></span><span> VNĐ</span><span class="gia none"><?= $product['price'] ?></span></p>
-                                <!-- <a class="add-cart" href="" onclick="addToCart(<?= $id ?>)"><i class="fas fa-cart-plus"></i>Thêm vào giỏ hàng</a> -->
-                                <button class="add-cart" style="margin-left:10px;" onclick="addToCart(<?= $id ?>)"><i class="fas fa-cart-plus"></i><a href="/cart.php"></a> Thêm vào giỏ hàng</button>
-                                <p></p>
-                                <!-- <a class="buy-now" href="checkout.php" >Mua ngay</a> -->
-                                <button class="buy-now" style="margin-left:10px;" onclick="buyNow(<?= $id ?>)">Mua ngay</button>
-                            
-
-                                <script>
-                                    function updatePrice() {
-                                        var price = document.getElementById('price').innerText; // giá tiền
-                                        var num = document.querySelector('#num').value; // số lượng
-                                        var gia1 = document.querySelector('.gia').innerText;
-                                        var gia = price.match(/\d/g);
-                                        gia = gia.join("");
-                                        var tong = gia1 * num;
-                                        document.getElementById('price').innerHTML = tong.toLocaleString();
-                                    }
-                                </script>
-                            </div>
-                        </div>
-                        <div class="fb-comments" data-href="http://localhost/PROJECT/details.php" data-width="750" data-numposts="5"></div>
-
-                    </section>
+                    <?php
+                    $sql = "select * from category where id=$id_category";
+                    $name = executeResult($sql);
+                    foreach ($name as $ten) {
+                        echo '<h1>' . $ten['name'] . '</h1>';
+                    }
+                    ?>
                 </div>
-            </section>
-            <section class="restaurants">
-                <div class="title">
-                    <h1>Các sản phẩm khác tại DI<span class="green" style="color: red;">CO</span></h1>
-                </div>
-                <div class="product-restaurants">
+                <div class="product-recently">
                     <div class="row">
                         <?php
-                        $sql = 'select * from product';
+                        $sql = "select * from product where id_category=$id_category";
                         $productList = executeResult($sql);
-                        $index = 1;
                         foreach ($productList as $item) {
                             echo '
                                 <div class="col">
                                     <a href="details.php?id=' . $item['id'] . '">
-                                        <img class="thumbnail" src="admin/product/' . $item['thumbnail'] . '" alt="">
+                                        <img class="thumbnail" src="../admin/product/' . $item['thumbnail'] . '" alt="">
                                         <div class="title">
                                             <p>' . $item['title'] . '</p>
                                         </div>
@@ -417,11 +296,11 @@ padding-right: 30px;
                                         </div>
                                         <div class="more">
                                             <div class="star">
-                                                <img src="images/icon/icon-star.svg" alt="">
+                                                <img src="../images/icon/icon-star.svg" alt="">
                                                 <span>4.9</span>
                                             </div>
                                             <div class="time">
-                                                <img src="images/icon/icon-clock.svg" alt="">
+                                                <img src="../images/icon/icon-clock.svg" alt="">
                                                 <span>99 comment</span>
                                             </div>
                                         </div>
@@ -430,223 +309,49 @@ padding-right: 30px;
                                 ';
                         }
                         ?>
+                        <?php
+                        if (isset($_GET['search'])) {
+                            $search = $_GET['search'];
+                            $sql = "SELECT * from product where title like '%$search%'";
+                            $listSearch = executeResult($sql);
+                            foreach ($listSearch as $item) {
+                                echo '
+                                <div class="col">
+                                    <a href="details.php?id=' . $item['id'] . '">
+                                        <img class="thumbnail" src="./admin/product/' . $item['thumbnail'] . '" alt="">
+                                        <div class="title">
+                                            <p>' . $item['title'] . '</p>
+                                        </div>
+                                        <div class="price">
+                                            <span>' . number_format($item['price'], 0, ',', '.') . ' VNĐ</span>
+                                        </div>
+                                        <div class="more">
+                                            <div class="star">
+                                                <img src="../images/icon/icon-star.svg" alt="">
+                                                <span>4.6</span>
+                                            </div>
+                                            <div class="time">
+                                                <img src="../images/icon/icon-clock.svg" alt="">
+                                                <span>15 comment</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                ';
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
             </section>
         </section>
     </div>
-</main>
+    <style>
 
-</div>
-<script type="text/javascript">
-    function addToCart(id) {
-        var num = document.querySelector('#num').value; // số lượng
-        $.post('api/cookie.php', {
-            'action': 'add',
-            'id': id,
-            'num': num
-        }, function(data) {
-            location.reload()
-        })
-    }
-
-    function buyNow(id) {
-            $.post('api/cookie.php', {
-                'action': 'add',
-                'id': id,
-                'num': 1
-            }, function(data) {
-                location.assign("checkout.php");
-            })
-    }
-</script>
-</body>
-<style>
-
-.btn {
-border: none;
-outline: none;
-background-color: #fffefe;
-border: 2px solid #c2c2c2;
-color:black;
-cursor: pointer;
-font-size: 14px;
-font-weight: 500;
-width:70px;
-
-}
-  
-  /* Style the active class, and buttons on mouse-over */
-  .active, .btn:hover {
-    border: 2px solid #000000;
-  }
-.option{
-    width: 800px;
-    width: 700px;
-}
-
-    
-
-section.main section.oder-product {
-  display: grid;
-  grid-template-columns: auto -10%;
-  
-}
-section.main section.oder-product .link a {
-  text-decoration: none;
-  color: black;
-  font-size: 20px;
-}
-section.main section.oder-product .title h1 {
-  font-size: 35px;
-  font-family: 'Encode Sans SC', sans-serif;
-  margin: 0px;
-  padding: 0px;
-  color: black;
-  padding: 30px;
-}
-section.main section.oder-product .title .main-order .box {
-  display: flex;
-}
-section.main section.oder-product .title .main-order .box img {
-  width: 100%;
-}
-section.main section.oder-product .title .main-order .box .about p {
-  font-size: 17px;
-  color: rgb(44, 38, 38);
-  font-weight: 500;
-}
-section.main section.oder-product .title .main-order .box .about .size {
-  display: flex;
-}
-section.main section.oder-product .title .main-order .box .about .size p {
-  font-weight: 500;
-}
-section.main section.oder-product .title .main-order .box .about .size ul {
-  display: flex;
-  list-style: none;
-}
-section.main section.oder-product .title .main-order .box .about .size ul li a {
-  padding: 5px 10px;
-  border: 1px solid;
-  margin: 0 5px;
-  text-decoration: none;
-  color: black;
-}
-section.main section.oder-product .title .main-order .box .number {
-}
-section.main
-  section.oder-product
-  .title
-  .main-order
-  .box
-  .about
-  .number
-  .number-buy {
-  font-weight: 500;
-}
-section.main section.oder-product .title .main-order .box .about .price {
-  font-weight: 500;
-}
-section.main section.oder-product .title .main-order .box .about .price .none {
-  display: none;
-}
-section.main section.oder-product .title .main-order .box .about .price span {
-  color: red;
-  font-weight: 600;
-}
-section.main section.oder-product .title .main-order .box .about .buy-now {
-  padding: 13px 30px;
-  background-color: rgb(255, 0, 0);
-  border-radius: 3px;
-  color: white;
-  border: none;
-}
-section.main
-  section.oder-product
-  .title
-  .main-order
-  .box
-  .about
-  .buy-now:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-section.main section.oder-product .title .main-order .box .about .add-cart {
-  padding: 13px 30px;
-  background-color: rgba(255, 68, 35, 0.856);
-  border-radius: 3px;
-  color: white;
-  border: none;
-
-}
-section.main section.oder-product .title .main-order .box .about .add-cart i {
-  padding: 0 5px;
-}
-section.main
-  section.oder-product
-  .title
-  .main-order
-  .box
-  .about
-  .add-cart:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-/* END SẢN PHẨM  */
-aside h1 {
-  font-size: 30px;
-  margin: 0px;
-  padding: 0px;
-  padding-left: 40px;
-}
-aside .row {
-  display: flex;
-  flex-flow: column;
-  padding-left: 40px;
-  
-}
-aside .row .col {
-  border: 1px solid grey;
-  margin: 20px 0px 5px 0px;
-  border-radius: 5px;
-  
-}
-aside .row .col a {
-  display: flex;
-}
-aside .row .col img {
-  width: 50%;
-}
-aside .row .col a .about .title {
-  color: black;
-}
-aside .row .col a .about .title p {
-  padding: 0;
-  margin-top: 5px;
-  font-weight: 600;
-  font-size: 20px;
-  font-family: 'Encode Sans SC', sans-serif;
-}
-aside .row .col a .about .title span {
-  font-weight:bold;
-  color: red;
-  font-family: 'Bebas Neue', cursive ;
-}
-/* END Gợi ý cho bạn */
-section.comment {
-  margin: 5rem 0;
-  border-top: 1px solid black;
-}
-section.comment .container {
-  display: grid;
-  grid-template-columns: auto 30%;
-}
-section.comment .container .post {
-  display: flex;
-  flex-flow: column;
-}
-body {
+        section.main section.recently .title h1 {
+            border-bottom: 1px solid rgb(35, 54, 30);
+        }
+        body {
   margin: 0px;
   padding: 0px;
   font-family: SanomatGrabApp, -apple-system, BlinkMacSystemFont, Segoe UI,
@@ -663,6 +368,12 @@ body {
   /* background-color: rgb(170, 255, 227); */
   padding: 10px 0;
 }
+.container{
+    position: relative;
+    
+    width: 100%;
+    margin: 80px auto 30px;
+}
 #wrapper header .container {
   width: 90%;
   margin: 0px auto;
@@ -678,7 +389,6 @@ header section.logo {
 }
 header section.logo a img {
   width: 60%;
-
 }
 #wrapper header .container nav {
   text-align: left;
@@ -699,7 +409,6 @@ header section.logo a img {
   font-weight: 700;
   font-family: Muli, Futura, Helvetica, Arial, sans-serif;
   position: relative;
-
 }
 #wrapper header .container nav ul li a::after {
   content: "";
@@ -1139,34 +848,466 @@ section.main
   color: white;
   font-weight: 500;
 }
+/* end main  */
+footer {
+  background-color: #00B14C;
+  width: 100%;
+  margin: 0px auto;
+  margin-top: 1rem;
+}
+footer .container {
+  width: 90%;
+  margin: 0px auto;
+  display: flex;
+  flex-flow: column;
+}
+footer .container .logo {
+  padding: 20px 0;
+  border-bottom: 1px solid white;
+} 
+footer .container .link {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 30px 0;
+  border-bottom: 1px solid white;
+}
+footer .container .link .col a:hover{
+  cursor: pointer;
+  color: rgb(224, 247, 222);
+}
+footer .container .link .col a{
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px 0;
+  font-family: "Encode Sans SC", sans-serif;
+}
+footer .container .link .icon a{
+  padding: 10px 10px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+footer .container .link .icon a i{
+  font-size: 40px;
+}
+footer .container .link .col {
+  display: flex;
+  flex-flow: column;
+}
+footer .container .link .icon {
+  display: flex;
+}
+footer .container .bottom{
+  padding: 20px 0;
+}
 
 
-</style>
-</html>
-<!--------------------FOOTER--------------------------- -->
-<footer class="section-p1"><!--mục footer -->
-    <div class="col">
-        <h4>HỆ THỐNG CỬA HÀNG</h4><!--Hệ thông cửa hàng -->
-        <p>Quận 10 - 561 Sư Vạn Hạnh, Phường 13.</p>
-        <p>Quận Tân Bình - 136 Nguyễn Hồng Đào, Phường 14.</p>
-        <p>Quận Gò Vấp - 41 Quang Trung, Phường 3.</p>
-        <p>Đống Đa - 49-51 Hồ Đắc Di, Phường Nam Đồng.</p>
-    </div> 
-    <div class="col">
-        <h4>THÔNG TIN LIÊN HỆ</h4><!--Thông tin liên hệ -->
-        <p>Tuyển dụng:<a href ="liên kết "> https://www.facebook.com/DirtyCoins.VN/ </a> </p>
-        <p>Website:<a href ="liên kết "> https://dirtycoins.vn/ </a></p>
-        <p>Liên hệ CSKH: support@<a href ="liên kết "> https://dirtycoins.vn/lien-he </a></p>
-        <p>For business: contact@<a href ="liên kết "> 0933 800 190 - 1900252557 </a></p>
-    </div>
-    <div class="col">
-        <h4>FOLLOW US ON SOCIAL MEDIA</h4><!--Follow us on social media-->
-        <li><i class="fa fa-facebook"></i></li>
-        <li><i class="fa fa-instagram"></i></li>
-        <li><i class="fa fa-youtube"></i></li>            
-    </div>    
-</footer>
-<style>
+
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    
+}
+li{
+    list-style: none;/* bỏ chấm tròn của Others*/
+}
+body{/* chỉnh màu background menu (màu ô chứa chữ ko thay đổi)*/
+    background-color: white;
+}
+header{/* chỉnh menu*/
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 5%;
+    margin-top:0px; 
+    position:fixed; 
+    top:0;
+    left:0;
+    right:0;
+    background-color: #ffffff;
+    z-index: 1;
+    box-shadow: 2px 2px 2px rgba(241, 241, 241, 0.873);
+}
+
+
+
+/* ---------------chỉnh logo----------------*/
+header img{
+    width:150px;
+    cursor:pointer;
+}
+
+
+
+/* ---------------chỉnh other (search,shopping,user)----------------*/
+.other{
+    display:flex;
+}
+.other >li{
+    padding:0 12px;
+}
+.other >li:first-child{
+    position:relative;
+}
+.other >li:first-child input{/* chỉnh ô tìm kiếm*/
+    width:100%;/* chỉnh  độ dài ô tìm kiếm*/
+    height:150%;/* chỉnh độ rộng ô tìm kiếm*/
+    margin-top: -20px;
+    margin-left: -20px;
+    border:10;
+}
+.other >li:first-child i{
+    position:absolute;
+    right:10px;/* chỉnh vị trí  Icon search */
+}
+
+
+/* ---------------------------chỉnh Menu-------------------------------*/
+#menu {
+    list-style:none;
+    display: flex;
+}
+
+#menu ul{
+    list-style-type: none;
+    background:#ffffff;   /*  chỉnh màu ô chứa chữ */
+    text-align: center;
+}
+#menu ul li{
+    color:#0f0f0f;
+    display:inline-table;
+    width:120px;/* khoảng cách giữa các chữ trong menu */
+    height:30px;/* khoảng cách giữa menu và banner*/
+    line-height: 50px;/* khoảng cách giữa menu và thanh tìm kiếm*/
+    position:relative;   /* chỉnh khung menu xuống thành 1 hàng dọc */
+ 
+}
+#menu ul li a{
+    color:#060606;/* chỉnh màu chữ trên thanh menu */
+    text-decoration: none;
+    display:block;
+    font-size:17px;/* chỉnh cỡ chữ trên thanh menu*/
+}
+#menu ul li a:hover{
+    background:rgba(123, 123, 123, 0.262);/* chỉnh màu Ô lúc dê chuột vào */
+    color:#333;/* chỉnh màu chữ trong Ô lúc dê chuột vào */
+    
+}
+#menu ul li >.sub-menu{
+    display: none;
+    position: absolute;
+    background-color:  #ffffff;/* chỉnh màu Ô đa cấp lúc dê chuột vào */
+    z-index: 1;
+    list-style: none;
+}
+
+#menu ul li:hover .sub-menu{
+    display:block;
+}
+
+
+
+/* ------------------------Banner one piece------------------------------*/
+#banner1 {
+    width: 100%;
+    
+    background-image :url("banner onepiece.png");
+    background-size:cover;
+    height: 680px;/*chỉnh size banner*/
+    margin-top:70px;
+    display: flex;
+    padding:0px 133px;
+    position:relative;
+}
+#banner1 .box-left ,#banner .box-right {
+    width: 50%;
+}
+
+
+#banner1 .box-left button {/*nút buttom mua ngay*/
+    font-size:20px;/*chỉnh size chữ*/
+    width: 170px;/*chỉnh size dài bóng đen*/
+    height: 45px;/*chỉnh size rộng bóng đen*/
+    margin-top:320px;/*chỉnh vị trí buttom lên xuống*/
+    margin-left:-60px;/*chỉnh vị trí buttom trái phải*/
+    background:#1d1a1a;
+    border:none;
+    outline:none;
+    color:#fff;
+    font-weight: bold;
+    border-radius: 200px;
+    transition:0.4s;/*chỉnh tốc độ chuyển màu*/
+}
+#banner1 .box-left button:hover {/*màu sắc khi nhấp vô nút buttom mua ngay*/
+    background:orange;
+}
+
+
+
+/* ------------------------NEW ARRIVALS------------------------------*/
+#wp-products {/*căn nguyên lish new arrival và sản phẩm */
+    padding-top:130px;/*cách banner trên*/
+    padding-bottom: 78px;
+    padding-left:0px;
+    padding-right:0px;/*căn phải với web*/
+}
+
+#wp-products h2 {
+    text-align: center;
+    margin-bottom: 76px;/*căn trên so với chữ new arrival*/
+    font-size:5x;/*size chữ New Arrival*/
+    color:black;
+    margin-left:40px;
+}
+
+
+#list-products {
+    font-size:17px;/*size chữ sản phẩm*/
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#list-products .item {
+    width: 100%px;/*căn trái phải của hình ảnh so với lề*/
+    height: 0px;/*chỉnh khung border sau ảnh*/
+    background:#fafafa;
+    border-radius: 0px;
+    margin-bottom: 460px;/*chỉnh khoảng cách sản phẩm trên so với sản phẩm dưới*/
+}
+
+
+#list-products .item .name {
+    text-align: center;
+    color:rgb(10, 10, 10);
+    font-weight: bold;
+    margin-top:0px;/*chỉnh khoảng cách từ tên so với sản phẩm*/
+}
+
+#list-products .item .price {
+    text-align: center;
+    color:#090909;
+    font-weight: bold;
+    margin-top:0px;/*chỉnh khoảng cách từ giá tiền so với tên sản phẩm*/
+}
+
+
+.list-page {
+    width: 50%;
+    margin:0px auto;
+}
+
+.list-page {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ------------------------Banner SPRING OF THE Y------------------------------*/
+#banner2 {/* banner rồng*/
+    width: 100%;
+    background-image :url("banner rồng2.jpg");
+    background-size:cover;
+    height: 710px;/*chỉnh size banner*/
+    margin-top:-40px;
+    display: flex;
+    padding:0px 133px;
+    position:relative;
+}
+#banner2 .box-left ,#banner .box-right {
+    width: 50%;
+}
+
+#banner2  .box-left h2 {/* chỉnh chữ spring of the Y*/
+    
+    font-size:50px;
+    margin-top:55px;
+    margin-left:409px;
+    width: 100%;
+    padding:0px 30px;   
+    font-family:Tahoma ;
+    color:#AE611D
+}
+
+#banner2 .box-left button {/*nút buttom mua ngay*/
+    font-size:20px;/*chỉnh size chữ*/
+    width: 170px;/*chỉnh size dài bóng đen*/
+    height: 45px;/*chỉnh size rộng bóng đen*/
+    margin-top:460px;/*chỉnh vị trí buttom lên xuống*/
+    margin-left:565px;/*chỉnh vị trí buttom trái phải*/
+    background:#1d1a1a;
+    border:none;
+    outline:none;
+    color:#fff;
+    font-weight: bold;
+    border-radius: 200px;
+    transition:0.4s;/*chỉnh tốc độ chuyển màu*/
+}
+#banner2 .box-left button:hover {/*màu sắc khi nhấp vô nút buttom mua ngay*/
+    background:orange;
+}
+
+
+/* ------------------------Banner LILIWUYN------------------------------*/
+#banner3 {/* banner lilywuyn*/
+    width: 100%;
+    background-image :url("banner liliwuyn2.jpg");
+    background-size:cover;
+    height: 700px;/*chỉnh size banner*/
+    margin-top:-40px;
+    display: flex;
+    padding:0px 133px;
+    position:relative;
+}
+#banner3 .box-left ,#banner .box-right {
+    width: 50%;
+}
+
+#banner3 .box-left button {/*nút buttom mua ngay*/
+    font-size:20px;/*chỉnh size chữ*/
+    width: 170px;/*chỉnh size dài bóng đen*/
+    height: 45px;/*chỉnh size rộng bóng đen*/
+    margin-top:435px;/*chỉnh vị trí buttom lên xuống*/
+    margin-left:565px;/*chỉnh vị trí buttom trái phải*/
+    background:#1d1a1a;
+    border:none;
+    outline:none;
+    color:#fff;
+    font-weight: bold;
+    border-radius: 200px;
+    transition:0.4s;/*chỉnh tốc độ chuyển màu*/
+}
+#banner3 .box-left button:hover {/*màu sắc khi nhấp vô nút buttom mua ngay*/
+    background:orange;
+}
+
+
+
+/* ------------------------WHAT'S HOT------------------------------*/
+
+
+#new {/*căn nguyên lish new arrival và sản phẩm */
+    padding-top:50px;/*cách banner trên*/
+    padding-bottom: 78px;
+    padding-left:0px;
+    padding-right:160px;/*căn phải với web*/
+     
+}
+
+#new h2 {
+    padding-left:175px;
+    text-align: center;
+    margin-bottom: 50px;/*căn trên so với chữ WHAT'S HOT*/
+    font-size:5x;/*size chữ WHAT'S HOT*/
+    color:black;
+    
+}
+
+
+#list-new {
+    font-size:13px;/*size chữ sản phẩm*/
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#list-new .item {
+    width: 100%px;/*căn trái phải của hình ảnh so với lề*/
+    height: 0px;/*chỉnh khung border sau ảnh*/
+    background:#fafafa;
+    border-radius: 0px;
+    margin-bottom: 460px;/*chỉnh khoảng cách sản phẩm trên so với sản phẩm dưới*/
+}
+
+
+#list-new .item .name {
+    text-align: center;
+    color:rgb(10, 10, 10);
+    font-weight: bold;
+    margin-top:20px;/*chỉnh khoảng cách từ tên so với sản phẩm*/
+}
+
+
+.list-page {
+    width: 50%;
+    margin:0px auto;
+}
+
+.list-page {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+}
+#list-new .box-left{
+    text-align: center;
+    margin-top:450px;/*chỉnh lên xuống nút xem thêm */
+    margin-left:-451px;/*chỉnh trái phải nút xem thêm*/
+    
+}
+#list-new .box-left button:hover {/*màu sắc khi nhấp vô nút buttom mua ngay*/
+    background:orange;
+}
+#list-new .box-left button {/*nút buttom mua ngay*/
+    font-size:13px;/*chỉnh size chữ*/
+    width: 90px;/*chỉnh size dài bóng đen*/
+    height: 35px;/*chỉnh size rộng bóng đen*/
+    background:#1d1a1a;
+    border:none;
+    outline:none;
+    color:#fff;
+    font-weight: bold;
+    border-radius: 200px;
+    transition:0.4s;/*chỉnh tốc độ chuyển màu*/
+}
+
+
+
+/* ------------------------Banner 4------------------------------*/
+#banner4 {/* banner sale off*/
+    width: 100%;
+    background-image :url("banner\ saleoff2.jpg");
+    background-size:cover;
+    height: 113px;/*chỉnh size banner*/
+    margin-top:-20px;
+    margin-left:0px;
+    display: flex;
+    padding:0px 133px;
+    position:relative;
+}
+#banner4 .box-left ,#banner .box-right {
+    width: 50%;
+}
+
+#banner4 .box-left button {/*nút buttom mua ngay*/
+    font-size:15px;/*chỉnh size chữ*/
+    width: 190px;/*chỉnh size dài bóng đen*/
+    height: 55px;/*chỉnh size rộng bóng đen*/
+    margin-top:27px;/*chỉnh vị trí buttom lên xuống*/
+    margin-left:670px;/*chỉnh vị trí buttom trái phải*/
+    background:#1d1a1a;
+    border:none;
+    outline:none;
+    color:#fff;
+    font-weight: bold;
+    border-radius: 200px;
+    transition:0.4s;
+}
+#banner4 .box-left button:hover {/*màu sắc khi nhấp vô nút buttom mua ngay*/
+    background:orange;
+}
+
+
 /*----------------FOOTER--------------------*/
 
 footer{
@@ -1176,7 +1317,6 @@ footer{
     justify-content: space-around;
     margin-bottom:0px;
     padding-bottom: 20px;   /*chỉnh size background đen */
-    padding-left:150px;
     
 }
 footer.col{
@@ -1208,13 +1348,111 @@ footer li{ /*chỉnh icon fb,instagram,youtube*/
     
    
 }
-  @media screen and  (max-width: 870px)  and (min-width:300px){
-    body {
-   width: 1500px;
-    }
 
+
+/*------------------------Cartegory----------------------------------------*/
+
+/* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-</style>
+.container{
+    position: relative;
+    
+    width: 100%;
+    margin: 80px auto 30px;
+}
+.select-btn{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.select-btn .btn-text{
+    font-size: 17px;
+    font-weight: 400;
+    color: #333;
+}
+.select-btn .arrow-dwn{
+    display: flex;
+    height: 21px;
+    width: 21px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 50%;
+    background: #6e93f7;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.select-btn.open .arrow-dwn{
+    transform: rotate(-180deg);
+}
+.list-items{
+    position: relative;
+    margin-top: 15px;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+.select-btn.open ~ .list-items{
+    display: block;
+}
+.list-items .item{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 0 15px;
+    border-radius: 8px;
+}
+.list-items .item:hover{
+    background-color: #e7edfe;
+}
+.item .item-text{
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+}
+.item .checkbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+    border-radius: 4px;
+    margin-right: 12px;
+    border: 1.5px solid #c0c0c0;
+    transition: all 0.3s ease-in-out;
+}
+.item.checked .checkbox{
+    background-color: #4070f4;
+    border-color: #4070f4;
+}
+.checkbox .check-icon{
+    color: #fff;
+    font-size: 11px;
+    transform: scale(0);
+    transition: all 0.2s ease-in-out;
+}
+.item.checked .check-icon{
+    transform: scale(1);
+}
 
-<style>
+    </style>
+<?php include("../Layout/footer.php") ?>

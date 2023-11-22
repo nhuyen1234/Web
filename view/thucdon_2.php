@@ -5,7 +5,7 @@
                 header('Location:index.php');
             }
 ?>
-<?php require_once('database/dbhelper.php')?>
+<?php require_once('../database/dbhelper.php')?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,7 +54,7 @@
                                 <li><a href="thucdon_2.php?id_sanpham=3">Liliwyun</a></li>
                             </ul>
                         </li>
-                        <li><a href="AboutUs/AboutUs.php">About us</a></li><!--About us -->
+                        <li><a href="../AboutUs/AboutUs.php">About us</a></li><!--About us -->
                     </ul>
                 </div>
 
@@ -287,7 +287,7 @@
                             echo '
                                 <div class="col">
                                     <a href="details.php?id=' . $item['id'] . '">
-                                        <img class="thumbnail" src="admin/product/' . $item['thumbnail'] . '" alt="">
+                                        <img class="thumbnail" src="../admin/product/' . $item['thumbnail'] . '" alt="">
                                         <div class="title">
                                             <p>' . $item['title'] . '</p>
                                         </div>
@@ -296,11 +296,11 @@
                                         </div>
                                         <div class="more">
                                             <div class="star">
-                                                <img src="images/icon/icon-star.svg" alt="">
+                                                <img src="../images/icon/icon-star.svg" alt="">
                                                 <span>4.9</span>
                                             </div>
                                             <div class="time">
-                                                <img src="images/icon/icon-clock.svg" alt="">
+                                                <img src="../images/icon/icon-clock.svg" alt="">
                                                 <span>99 comment</span>
                                             </div>
                                         </div>
@@ -318,7 +318,7 @@
                                 echo '
                                 <div class="col">
                                     <a href="details.php?id=' . $item['id'] . '">
-                                        <img class="thumbnail" src="admin/product/' . $item['thumbnail'] . '" alt="">
+                                        <img class="thumbnail" src="../admin/product/' . $item['thumbnail'] . '" alt="">
                                         <div class="title">
                                             <p>' . $item['title'] . '</p>
                                         </div>
@@ -327,11 +327,11 @@
                                         </div>
                                         <div class="more">
                                             <div class="star">
-                                                <img src="images/icon/icon-star.svg" alt="">
+                                                <img src="../images/icon/icon-star.svg" alt="">
                                                 <span>4.6</span>
                                             </div>
                                             <div class="time">
-                                                <img src="images/icon/icon-clock.svg" alt="">
+                                                <img src="../images/icon/icon-clock.svg" alt="">
                                                 <span>15 comment</span>
                                             </div>
                                         </div>
@@ -894,8 +894,10 @@ footer .container .link .icon {
 footer .container .bottom{
   padding: 20px 0;
 }
-    </style>
-<?php include("Layout/footer.php") ?>   <style>
+
+</style>
+  <?php include("../Layout/footer.php") ?>   
+<style>
 
 section.main section.recently .title h1 {
     border-bottom: 1px solid rgb(35, 54, 30);

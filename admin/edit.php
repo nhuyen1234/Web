@@ -85,7 +85,7 @@ require_once('database/dbhelper.php');
                                 $order_details_List = executeResult_query($sql);
                                 foreach ($order_details_List as $item) {
                                     $orderstatus = orderstatus_query($item['status']);
-                                    $orderstatus = orderstatus_query2($item['status']);
+                                    $orderstatus2 = orderstatus_query2($item['status']);
                                     echo '
                                         <tr style="text-align: center;">
                                             <td width="50px">' . (++$count) . '</td>
@@ -97,7 +97,7 @@ require_once('database/dbhelper.php');
                                             <td>
                                                 <select name="status" id="status" onchange="status(' . $item['order_id'] . ')">
                                                     <option value="Đặt hàng thành công">'. $orderstatus. order_status_query($item['status']) .'</option>
-                                                    <option value="Đang chuẩn bị">'. $orderstatus. order_status_query2($item['status']) .'</option>
+                                                    <option value="Đang chuẩn bị">'. $orderstatus2. order_status_query2($item['status']) .'</option>
                                                 </select>
                                             </td>
                                             <td width="100px">
