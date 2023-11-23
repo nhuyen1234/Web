@@ -69,11 +69,7 @@
                                 
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
                                 <div class="logout">
-<<<<<<< HEAD
-                                <a href="/Web/admin/login.php"><i class="fas fa-user-edit"></i>Admin</a> <br>                            
-=======
                                 <a href="/Web/admin/index.php"><i class="fas fa-user-edit"></i>Admin</a> <br>                            
->>>>>>> 86705d46ffa8c98566b9768f6d5d56944bf2cd81
                                 <a href="/Web/index.php?dangxuat=1"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                                 </div>';
                                                         }

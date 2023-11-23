@@ -17,7 +17,7 @@
 		if($count>0){
 			$_SESSION['submit'] = $tendangnhap;
 			echo '<script>alert("Đăng nhập thành công.");
-                window.location.href="index.php";
+                window.location.href="../index.php";
                 </script>';
             session_start();
             setcookie("tendangnhap", $tendangnhap, time() + 30 * 24 * 60 * 60, '/');
