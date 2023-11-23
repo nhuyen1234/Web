@@ -32,7 +32,7 @@ header("content-type:text/html; charset=UTF-8");
 <body>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="category/index.php">Thống kê</a>
+            <a class="nav-link" href="index.php">Thống kê</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="category/index.php">Quản lý danh mục</a>
