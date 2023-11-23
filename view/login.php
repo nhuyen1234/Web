@@ -17,7 +17,7 @@
 		if($count>0){
 			$_SESSION['submit'] = $tendangnhap;
 			echo '<script>alert("Đăng nhập thành công.");
-                window.location.href=".../index.php";
+                window.location.href="index.php";
                 </script>';
             session_start();
             setcookie("tendangnhap", $tendangnhap, time() + 30 * 24 * 60 * 60, '/');
@@ -62,7 +62,7 @@
 <a href="/Web/view/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
   <div id="menu" style="margin-top:10px;">
                     <ul>
-                        <li><a href="index.php">Home</a></li><!--Trang chủ -->
+                        <li><a href="../index.php">Home</a></li><!--Trang chủ -->
                         <li>
                             <a href="#">Top</a><!--Top -->
                             <ul class="sub-menu">
@@ -102,7 +102,7 @@
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
                                 <div class="logout">
                                 <a href="#"><i class="fas fa-user-edit"></i>Admin</a> <br>                            
-                                <a href="/Web/index.php?dangxuat=1"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+                                <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                                 </div>';
                                 session_start();
                                 setcookie("username", $username, time() + 30 * 24 * 60 * 60, '/');
@@ -112,12 +112,12 @@
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
                                 <div class="logout">
                                 <a href="#"><i class="fas fa-exchange-alt"></i>Đổi mật khẩu</a> <br>                           
-                                <a href="/Web/index.php?dangxuat=1"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+                                <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                                 </div>';
                                                         }
                 } 
                 else {
-                             echo '<a href="./view/login.php"">Đăng nhập</a>';
+                             echo '<a href="login.php"">Đăng nhập</a>';
                                 }
                 ?>
                     
