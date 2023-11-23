@@ -95,7 +95,7 @@ include("Layout/header.php");
             <div class="item"><!--sản phẩm 2 -->
                 <img src="/Web/images/new2.jpg"width="340" height="340"  alt="">                   
                 <div class="name" >7 TIPS PHỐI ĐỒ VỚI VARSITY JACKET </div>
-                <div class="name" >THU HÚT MỌI ÁNH</div>
+                <div class="name" >THU HÚT MỌI ÁNH NHÌN</div>
             </div>  
             <div class="box-left" >
                 <a href="AboutUs/7 TIPS PHỐI ĐỒ VỚI VARSITY JACKET/7 TIPS PHỐI ĐỒ VỚI VARSITY JACKET.php"><button>Xem thêm </button><!--nút mua hàng --></a>
