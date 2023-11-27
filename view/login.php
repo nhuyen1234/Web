@@ -104,8 +104,6 @@
                                 <a href="#"><i class="fas fa-user-edit"></i>Admin</a> <br>                            
                                 <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                                 </div>';
-                                
-                                
                                                         }
                             else{
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
