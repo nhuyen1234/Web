@@ -3,7 +3,7 @@
             session_start();
             if(isset($_GET['dangxuat'])&&$_GET['dangxuat']==1){
                 unset($_SESSION['submit']);
-                header('Location:index.php');
+                header('Location:../index.php');
             }
 ?>
 <?php
@@ -296,22 +296,22 @@ require_once('../utils/utility.php');
                             <tbody>
                                 <?php
                                 
-                                if (isset($_COOKIE['tendangnhap']) && $user_admin == 'Admin_Chu' ) {
+                                if (isset($_COOKIE['tendangnhap']) && $user_admin = 'Admin_Chu' ) {
                                     $tendangnhap = $_COOKIE['tendangnhap'];
 
                                     $sql = "SELECT * FROM tbl_admin WHERE tendangnhap = '$tendangnhap'";
                                     $user = executeResult($sql); // in ra 1 dòng 
                                     foreach ($user as $item) {
                                         $userId = $item['id_admin'];
+                                        $sql = "SELECT * from order_details, product where product.id=order_details.product_id AND order_details.id_user = '$userId' ORDER BY order_id DESC";
                                     }
 
-                                    $sql = "SELECT * from order_details, product where product.id=order_details.product_id AND order_details.id_user = '$userId' ORDER BY order_id DESC";
                                     $order_details_List = executeResult($sql);
                                     $total = 0;
                                     $count = 0;
                                     // $sql = 'SELECT * FROM user where username = $username';
                                     foreach ($order_details_List as $item) {
-                                        $orderstatus = orderstatus($item['status']);
+                                        
                                         echo '
                                         <tr style="text-align: center;">
                                             <td width="50px">' . (++$count) . '</td>
@@ -322,7 +322,7 @@ require_once('../utils/utility.php');
                                             <td class="b-500 orange">' . number_format($item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
                                             <td width="100px">' . $item['num'] . '</td>
                                             <td class="b-500 red">' . number_format($item['num'] * $item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
-                                            <td style="color:green; font-weight:600;">' .$orderstatus. order_status($item['status']) . '</td>
+                                            <td style="color:green; font-weight:600;">' .$item['status'] . '</td>
                                         </tr>
                                         ';
                                     }
@@ -344,7 +344,7 @@ require_once('../utils/utility.php');
                                     
                                     // $sql = 'SELECT * FROM user where username = $username';
                                     foreach ($order_details_List as $item) {
-                                        $orderstatus = orderstatus($item['status']);
+                                        
                                         echo '
                                         <tr style="text-align: center;">
                                             <td width="50px">' . (++$count) . '</td>
@@ -355,7 +355,7 @@ require_once('../utils/utility.php');
                                             <td class="b-500 orange">' . number_format($item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
                                             <td width="100px">' . $item['num'] . '</td>
                                             <td class="b-500 red">' . number_format($item['num'] * $item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
-                                            <td style="color:green; font-weight:600;">' .$orderstatus. order_status($item['status']) . '</td>
+                                            <td style="color:green; font-weight:600;">' . $item['status'] . '</td>
                                         </tr>
                                         ';
                                     }

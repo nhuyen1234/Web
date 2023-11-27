@@ -46,10 +46,14 @@ header("content-type:text/html; charset=UTF-8");
                 <li class="nav-item ">
                     <a class="nav-link " href="dashboard.php">Quản lý đơn hàng</a>
                 </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="user/index.php">Quản lý Khách hàng</a>
+                </li>
             </ul>
         </header>
         <div class="container">
             <main>
+                <br>
                 <h1>Bảng thống kê</h1>
                 <section class="dashboard">
                     <div class="table">
@@ -71,7 +75,7 @@ header("content-type:text/html; charset=UTF-8");
                             $result = mysqli_query($conn, $sql);
                             echo '<span>' . mysqli_num_rows($result) . '</span>';
                             ?>
-                            <p><a href="">xem chi tiết➜</a></p>
+                            <p><a href="user/">xem chi tiết➜</a></p>
                         </div>
                         <div class="sp dm">
                             <p>Danh mục</p>

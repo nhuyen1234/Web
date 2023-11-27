@@ -62,7 +62,7 @@ if (!empty($_POST)) {
     } else {
         $cartList = [];
     }
-    $status = 'Đặt hàng thành công';
+    $status = 'Đang chuẩn bị';
     
     foreach ($cartList as $item) {
         $num = 0;

@@ -50,64 +50,64 @@ if (isset($_GET['id'])) {
 <header>
 <a href="/Web/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
   <div id="menu" style="margin-top:10px;">
-                    <ul>
-                        <li><a href="../index.php">Home</a></li><!--Trang chủ -->
-                        <li>
-                            <a href="#">Top</a><!--Top -->
-                            <ul class="sub-menu">
-                                <li><a href="thucdon.php?id_category=1">Hoodie</a></li>
-                                <li><a href="thucdon.php?id_category=2">T-Shirt</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Bottom</a><!--Bottom -->
-                            <ul class="sub-menu">
-                                <li><a href="thucdon.php?id_category=4">Trouser</a></li>
-                                <li><a href="thucdon.php?id_category=3">Short</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Collection</a><!--Collection -->
-                            <ul class="sub-menu">
-                                <li><a href="thucdon_2.php?id_sanpham=1">One piece</a></li>
-                                <li><a href="thucdon_2.php?id_sanpham=2">Spring of the Y</a></li>
-                                <li><a href="thucdon_2.php?id_sanpham=3">Liliwyun</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="../AboutUs/AboutUs.php">About us</a></li><!--About us -->
+            <ul>
+                <li><a href="../index.php">Home</a></li><!--Trang chủ -->
+                <li>
+                    <a href="#">Top</a><!--Top -->
+                    <ul class="sub-menu">
+                        <li><a href="thucdon.php?id_category=1">Hoodie</a></li>
+                        <li><a href="thucdon.php?id_category=2">T-Shirt</a></li>
                     </ul>
-                </div>
-        
-        <div class="other"><!--Other -->
+                </li>
+                <li>
+                    <a href="#">Bottom</a><!--Bottom -->
+                    <ul class="sub-menu">
+                        <li><a href="thucdon.php?id_category=4">Trouser</a></li>
+                        <li><a href="thucdon.php?id_category=3">Short</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Collection</a><!--Collection -->
+                    <ul class="sub-menu">
+                        <li><a href="thucdon_2.php?id_sanpham=1">One piece</a></li>
+                        <li><a href="thucdon_2.php?id_sanpham=2">Spring of the Y</a></li>
+                        <li><a href="thucdon_2.php?id_sanpham=3">Liliwyun</a></li>
+                    </ul>
+                </li>
+                <li><a href="../AboutUs/AboutUs.php">About us</a></li><!--About us -->
+            </ul>
+        </div>
+
+<div class="other"><!--Other -->
+    
+    
+    <div class="login"> 
+        <?php
+        // Sửa thông tin đăng nhập Admin và user
+        if(isset($_SESSION['submit'])) {
+            $user_admin = $_SESSION['submit'];
+                    if($user_admin == 'Admin_Chu') {
+                        
+                        echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
+                        <div class="logout">
+                        <a href="/Web/admin/login.php"><i class="fas fa-user-edit"></i>Admin</a> <br>                                                                                
+                        <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+                        </div>';
+                                                }
+                    else{
+                        echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
+                        <div class="logout">
+                        <a href="#"><i class="fas fa-exchange-alt"></i>Đổi mật khẩu</a> <br>                           
+                        <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+                        </div>';
+                                                }
+        } 
+        else {
+                      echo '<a href="login.php"">Đăng nhập</a>';
+                        }
+        ?>
             
-            
-            <div class="login"> 
-                <?php
-                // Sửa thông tin đăng nhập Admin và user
-                if(isset($_SESSION['submit'])) {
-                    $user_admin = $_SESSION['submit'];
-                            if($user_admin == 'Admin_Chu') {
-                                
-                                echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
-                                <div class="logout">
-                                <a href="/Web/admin/login.php"><i class="fas fa-user-edit"></i>Admin</a> <br>                                                                                
-                                <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
-                                </div>';
-                                                        }
-                            else{
-                                echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
-                                <div class="logout">
-                                <a href="#"><i class="fas fa-exchange-alt"></i>Đổi mật khẩu</a> <br>                           
-                                <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
-                                </div>';
-                                                        }
-                } 
-                else {
-                             echo '<a href="login.php"">Đăng nhập</a>';
-                                }
-                ?>
-                    
-            </div>
+    </div>
             
             
             <li><a href="cart.php" style="text-decoration:none; " ><i class="fas fa-shopping-bag"></i></a> <?php
@@ -335,64 +335,56 @@ padding-right: 30px;
   margin: 0;
   box-sizing: border-box;
 }
-</style>
+</style>                       
+  <div class="about">
+      <p style="padding-top:105px;margin-left:10px; width:300px"><?= $product['content'] ?></p>
+      <div id="myDIV"style="padding-top:10px;margin-left:10px;">
+          <button class="btn">S</button>
+          <button class="btn active">M</button>
+          <button class="btn">L</button>
+      </div>
+        <script>
+        // Add active class to the current button (highlight it)
+        var header = document.getElementById("myDIV");
+        var btns = header.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+            });
+        }
+        </script>
+          <div class="number"style="padding-top:10px;margin-left:10px;">
+              <span class="number-buy">Số lượng</span>
+              <input id="num" type="number" value="1" min="1" onchange="updatePrice()">
+          </div>
+          <p class="price"style="padding-top:70px;margin-left:10px;">Giá: <span id="price">
+            <?= number_format($product['price'], 0, ',', '.') ?></span><span> VNĐ</span><span class="gia none"><?= $product['price'] ?></span></p>
+          <!-- <a class="add-cart" href="" onclick="addToCart(<?= $id ?>)"><i class="fas fa-cart-plus"></i>Thêm vào giỏ hàng</a> -->
+          <button class="add-cart" style="margin-left:10px;" onclick="addToCart(<?= $id ?>)"><i class="fas fa-cart-plus"></i><a href="/cart.php"></a> Thêm vào giỏ hàng</button>
+          <p></p>
+          <!-- <a class="buy-now" href="checkout.php" >Mua ngay</a> -->
+          <button class="buy-now" style="margin-left:10px;" onclick="buyNow(<?= $id ?>)">Mua ngay</button>
+      
 
+          <script>
+              function updatePrice() {
+                  var price = document.getElementById('price').innerText; // giá tiền
+                  var num = document.querySelector('#num').value; // số lượng
+                  var gia1 = document.querySelector('.gia').innerText;
+                  var gia = price.match(/\d/g);
+                  gia = gia.join("");
+                  var tong = gia1 * num;
+                  document.getElementById('price').innerHTML = tong.toLocaleString();
+              }
+          </script>
+      </div>
+  </div>
+        <div class="fb-comments" data-href="http://localhost/PROJECT/details.php" data-width="750" data-numposts="5"></div>
 
-
-
-                            
-                            <div class="about">
-                                <p style="padding-top:105px;margin-left:10px; width:300px"><?= $product['content'] ?></p>
-                                <div id="myDIV"style="padding-top:10px;margin-left:10px;">
-                                    <button class="btn">S</button>
-                                    <button class="btn active">M</button>
-                                    <button class="btn">L</button>
-                                
-                                </div>
-                                
-                                <script>
-                                // Add active class to the current button (highlight it)
-                                var header = document.getElementById("myDIV");
-                                var btns = header.getElementsByClassName("btn");
-                                for (var i = 0; i < btns.length; i++) {
-                                    btns[i].addEventListener("click", function() {
-                                    var current = document.getElementsByClassName("active");
-                                    current[0].className = current[0].className.replace(" active", "");
-                                    this.className += " active";
-                                    });
-                                }
-                                </script>
-                                
-                                <div class="number"style="padding-top:10px;margin-left:10px;">
-                                    <span class="number-buy">Số lượng</span>
-                                    <input id="num" type="number" value="1" min="1" onchange="updatePrice()">
-                                </div>
-
-                                <p class="price"style="padding-top:70px;margin-left:10px;">Giá: <span id="price"><?= number_format($product['price'], 0, ',', '.') ?></span><span> VNĐ</span><span class="gia none"><?= $product['price'] ?></span></p>
-                                <!-- <a class="add-cart" href="" onclick="addToCart(<?= $id ?>)"><i class="fas fa-cart-plus"></i>Thêm vào giỏ hàng</a> -->
-                                <button class="add-cart" style="margin-left:10px;" onclick="addToCart(<?= $id ?>)"><i class="fas fa-cart-plus"></i><a href="/cart.php"></a> Thêm vào giỏ hàng</button>
-                                <p></p>
-                                <!-- <a class="buy-now" href="checkout.php" >Mua ngay</a> -->
-                                <button class="buy-now" style="margin-left:10px;" onclick="buyNow(<?= $id ?>)">Mua ngay</button>
-                            
-
-                                <script>
-                                    function updatePrice() {
-                                        var price = document.getElementById('price').innerText; // giá tiền
-                                        var num = document.querySelector('#num').value; // số lượng
-                                        var gia1 = document.querySelector('.gia').innerText;
-                                        var gia = price.match(/\d/g);
-                                        gia = gia.join("");
-                                        var tong = gia1 * num;
-                                        document.getElementById('price').innerHTML = tong.toLocaleString();
-                                    }
-                                </script>
-                            </div>
-                        </div>
-                        <div class="fb-comments" data-href="http://localhost/PROJECT/details.php" data-width="750" data-numposts="5"></div>
-
-                    </section>
-                </div>
+    </section>
+</div>
             </section>
             <section class="restaurants">
                 <div class="title">

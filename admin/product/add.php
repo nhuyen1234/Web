@@ -167,6 +167,9 @@ if (isset($_GET['id'])) {
         <li class="nav-item">
             <a class="nav-link" href="../dashboard.php">Quản lý giỏ hàng</a>
         </li>
+        <li class="nav-item ">
+            <a class="nav-link " href="../user/index.php">Quản lý Khách hàng</a>
+        </li>
     </ul>
     <div class="container">
         <div class="panel panel-primary">

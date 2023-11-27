@@ -1,6 +1,6 @@
 <?php
 
-use function PHPSTORM_META\type;
+// use function PHPSTORM_META\type;
 
 require_once('database/dbhelper.php');
 //     $sql = 'select * from orders where';
@@ -50,7 +50,10 @@ require_once('database/dbhelper.php');
             <a class="nav-link" href="product/">Quản lý sản phẩm</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link active" href="dashboard.php">Quản lý giỏ hàng</a>
+            <a class="nav-link active" href="dashboard.php">Quản lý đơn hàng</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link " href="../user/index.php">Quản lý Khách hàng</a>
         </li>
     </ul>
     <div class="container">
@@ -84,8 +87,6 @@ require_once('database/dbhelper.php');
                                 where order_details.order_id=orders.id and product.id=order_details.product_id and order_id=$order_id";
                                 $order_details_List = executeResult_query($sql);
                                 foreach ($order_details_List as $item) {
-                                    $orderstatus = orderstatus_query($item['status']);
-                                    $orderstatus2 = orderstatus_query2($item['status']);
                                     echo '
                                         <tr style="text-align: center;">
                                             <td width="50px">' . (++$count) . '</td>
@@ -96,8 +97,11 @@ require_once('database/dbhelper.php');
                                             <td width="100px">' . $item['phone_number'] . '</td>
                                             <td>
                                                 <select name="status" id="status" onchange="status(' . $item['order_id'] . ')">
-                                                    <option value="Đặt hàng thành công">'. $orderstatus. order_status_query($item['status']) .'</option>
-                                                    <option value="Đang chuẩn bị">'. $orderstatus2. order_status_query2($item['status']) .'</option>
+                                                    <option value="Đang chuẩn bị">Đang chuẩn bị</option>
+                                                    <option value="Chờ thanh toán">Chờ thanh toán</option>
+                                                    <option value="Đặt hàng thành công">Đặt hàng thành công</option>
+                                                    <option value="Trả hàng">Trả hàng</option>
+                                                    <option value="Đã giao hàng">Đã giao hàng</option>
                                                 </select>
                                             </td>
                                             <td width="100px">

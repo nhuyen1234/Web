@@ -59,7 +59,7 @@
   
 </head>
 <header>
-<a href="/Web/view/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
+<a href="/Web/index.php"><img src="/Web/images/avt.png" class="logo" style="width:130px;"><!--LOGO --></a>
   <div id="menu" style="margin-top:10px;">
                     <ul>
                         <li><a href="../index.php">Home</a></li><!--Trang chủ -->
@@ -104,9 +104,8 @@
                                 <a href="#"><i class="fas fa-user-edit"></i>Admin</a> <br>                            
                                 <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                                 </div>';
-                                session_start();
-                                setcookie("username", $username, time() + 30 * 24 * 60 * 60, '/');
-                                setcookie("password", $password, time() + 30 * 24 * 60 * 60, '/');
+                                
+                                
                                                         }
                             else{
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>

@@ -32,12 +32,15 @@ require_once('../database/dbhelper.php');
             <a class="nav-link" href="../product/">Quản lý sản phẩm</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../dashboard.php">Quản lý giỏ hàng</a>
+            <a class="nav-link" href="../dashboard.php">Quản lý đơn hàng</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="../user/index.php">Quản lý Khách hàng</a>
         </li>
     </ul>
     <div class="container">
         <div class="panel panel-primary">
-            <div class="panel-heading">
+            <br><div class="panel-heading">
                 <h2 class="text-center">Quản lý danh mục</h2>
             </div>
             <div class="panel-body"></div>
