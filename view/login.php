@@ -104,9 +104,6 @@
                                 <a href="#"><i class="fas fa-user-edit"></i>Admin</a> <br>                            
                                 <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                                 </div>';
-                                session_start();
-                                setcookie("username", $username, time() + 30 * 24 * 60 * 60, '/');
-                                setcookie("password", $password, time() + 30 * 24 * 60 * 60, '/');
                                                         }
                             else{
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>

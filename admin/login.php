@@ -104,7 +104,6 @@ html {
   width: 100%;
   height: 100%;
 }
-
 .container {
   margin: 0;
   top: 50px;
