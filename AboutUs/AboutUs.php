@@ -75,7 +75,7 @@
                 
                 if(isset($_SESSION['submit'])) {
                     $user_admin = $_SESSION['submit'];
-                            if($user_admin == 'Admin_Chu') {
+                            if($user_admin == 'Admin_Nyen') {
                                 
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
                                 <div class="logout">
