@@ -59,7 +59,7 @@
                             <a href="#">Collection</a><!--Collection -->
                             <ul class="sub-menu">
                                 <li><a href="/Web/thucdon_2.php?id_sanpham=1">One piece</a></li>
-                                <li><a href="/Web/thucdon_2.php?id_sanpham=2">Spring of the Y</a></li>
+                                <li><a href="/Web/thucdon_2.php?id_sanpham=2">Spring of the ¥</a></li>
                                 <li><a href="/Web/thucdon_2.php?id_sanpham=3">Liliwyun</a></li>
                             </ul>
                         </li>
