@@ -315,17 +315,17 @@
 <footer class="section-p1"><!--mục footer -->
     <div class="col">
         <h4>HỆ THỐNG CỬA HÀNG</h4><!--Hệ thông cửa hàng -->
+        <p>Quận 1 - 160 Nguyễn Cư Trinh, Phường Nguyễn Cư Trinh.</p>
+        <p>Quận 1 - The New Playground 26 Lý Tự Trọng, Phường Bến Nghé.</p>
+        <p>Quận 1 - Central Market 4 Phạm Ngũ Lão, Phường Phạm Ngũ Lão.</p>
         <p>Quận 10 - 561 Sư Vạn Hạnh, Phường 13.</p>
-        <p>Quận Tân Bình - 136 Nguyễn Hồng Đào, Phường 14.</p>
-        <p>Quận Gò Vấp - 41 Quang Trung, Phường 3.</p>
-        <p>Đống Đa - 49-51 Hồ Đắc Di, Phường Nam Đồng.</p>
     </div> 
     <div class="col">
         <h4>THÔNG TIN LIÊN HỆ</h4><!--Thông tin liên hệ -->
-        <p>Tuyển dụng:<a href ="liên kết "> link Website </a> </p>
-        <p>Website:<a href ="liên kết "> link Website </a></p>
-        <p>Liên hệ CSKH: support@<a href ="liên kết "> link Website </a></p>
-        <p>For business: contact@<a href ="liên kết "> link Website </a></p>
+        <p>Tuyển dụng:<a href ="https://www.facebook.com/DirtyCoins.VN/"> https://www.facebook.com/DirtyCoins.VN/</a> </p>
+        <p>Website:<a href ="https://dirtycoins.vn/"> https://dirtycoins.vn/</a></p>
+        <p>Liên hệ CSKH: support@<a href ="https://dirtycoins.vn/lien-he"> https://dirtycoins.vn/lien-he</a></p>
+        <p>For business: contact@<a href ="0933 800 190 - 1900252557"> 0933 800 190 - 1900252557</a></p>
     </div>
     <div class="col">
         <h4>FOLLOW US ON SOCIAL MEDIA</h4><!--Follow us on social media-->
