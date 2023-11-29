@@ -102,6 +102,7 @@ require_once('database/dbhelper.php');
                                                     <option value="Đặt hàng thành công">Đặt hàng thành công</option>
                                                     <option value="Trả hàng">Trả hàng</option>
                                                     <option value="Đã giao hàng">Đã giao hàng</option>
+                                                    <option value="Đã thanh toán">Đã thanh toán</option>
                                                 </select>
                                             </td>
                                             <td width="100px">
