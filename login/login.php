@@ -186,10 +186,10 @@ include('config.php');
 <footer class="section-p1"><!--mục footer -->
     <div class="col">
         <h4>HỆ THỐNG CỬA HÀNG</h4><!--Hệ thông cửa hàng -->
+        <p>Quận 1 - 160 Nguyễn Cư Trinh, Phường Nguyễn Cư Trinh.</p>
+        <p>Quận 1 - The New Playground 26 Lý Tự Trọng, Phường Bến Nghé.</p>
+        <p>Quận 1 - Central Market 4 Phạm Ngũ Lão, Phường Phạm Ngũ Lão.</p>
         <p>Quận 10 - 561 Sư Vạn Hạnh, Phường 13.</p>
-        <p>Quận Tân Bình - 136 Nguyễn Hồng Đào, Phường 14.</p>
-        <p>Quận Gò Vấp - 41 Quang Trung, Phường 3.</p>
-        <p>Đống Đa - 49-51 Hồ Đắc Di, Phường Nam Đồng.</p>
     </div> 
     <div class="col">
         <h4>THÔNG TIN LIÊN HỆ</h4><!--Thông tin liên hệ -->
