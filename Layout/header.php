@@ -70,7 +70,7 @@
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
                                 <div class="logout">
                                 <a href="/Web/admin/index.php"><i class="fas fa-user-edit"></i>Admin</a> <br>                            
-                                <a href="/Web/index.php?dangxuat=1"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+                                <a href="../index.php?dangxuat=1"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                                 </div>';
                                                         }
                             else{

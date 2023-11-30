@@ -4,10 +4,6 @@
 require_once('../database/dbhelper.php');
 require_once('../utils/utility.php');
 
-session_start();
-    if(!isset($_SESSION['submit'])){
-        header('Location: login.php');
-}
 
     $cart = [];
     if (isset($_COOKIE['cart'])) {
@@ -365,7 +361,8 @@ session_start();
                             </tbody>
                         </table>
                         <p>Tổng đơn hàng: <span class="red bold"><?= number_format($total, 0, ',', '.') ?><span> VNĐ</span></span></p>
-                        <button class="btn btn-success" onclick="">Thanh toán</button>
+                        
+                                <a href="checkout.php"><button class="btn btn-success" onclick="checkLogin()">Thanh toán</button></a>
                             
                     
                     </div>
@@ -384,6 +381,9 @@ session_start();
             })
         }
 
+        function checklogin(){
+            
+        }
         
     </script>
     

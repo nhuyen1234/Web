@@ -53,14 +53,14 @@ require_once('database/dbhelper.php');
             <a class="nav-link active" href="dashboard.php">Quản lý đơn hàng</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link " href="../user/index.php">Quản lý người dùng</a>
+            <a class="nav-link " href="index.php">Quản lý người dùng</a>
         </li>
     </ul>
     <div class="container">
         <div class="panel panel-primary">
-            <div class="panel-heading">
+            <div class="panel-heading"><br>
                 <h2 class="text-center">Edit</h2>
-            </div>
+            </div><br>
             <div class="panel-body">
                 <form action="" method="POST">
                     <table class="table table-bordered table-hover">
@@ -98,6 +98,7 @@ require_once('database/dbhelper.php');
                                             <td>
                                                 <select name="status" id="status" onchange="status(' . $item['order_id'] . ')">
                                                     <option value="Đơn hàng mới">Đơn hàng mới</option>
+                                                    <option value="Đang xử lý">Đang xử lý</option>
                                                     <option value="Đã thanh toán">Đã thanh toán</option>
                                                 </select>
                                             </td>

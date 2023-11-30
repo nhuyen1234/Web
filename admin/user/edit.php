@@ -72,7 +72,7 @@
     <div class="container">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h2 class="text-center">Thêm/Sửa người dùng</h2>
+                <h2 class="text-center">Sửa người dùng</h2>
             </div>
             <div class="panel-body">
                 <form method="POST">

@@ -60,12 +60,12 @@ header("content-type:text/html; charset=UTF-8");
                             <tr style="font-weight: 500;text-align: center;">
                                 <td width="50px">STT</td>
                                 <td width="200px">Tên User</td>
-                                <td>Tên Sản Phẩm/<br>Số lượng</td>
-                                <td>Tổng tiền</td>
-                                <td width="250px">Địa chỉ</td>
+                                <td width="200px">Tên Sản Phẩm/<br>Số lượng</td>
+                                <td width="150px">Tổng tiền</td>
+                                <td width="200px">Địa chỉ</td>
                                 <td>Số điện thoại</td>
-                                <td>Trạng thái</td>
-                                <!-- <td width="50px">Lưu</td> -->
+                                <td width="200px">Trạng thái</td>
+                                <td colspan=2>Thao tác</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -100,6 +100,9 @@ header("content-type:text/html; charset=UTF-8");
                                             <td width="100px">
                                                 <a href="edit.php?order_id=' . $item['order_id'] . '" class="btn btn-success">Sửa</a>
                                             </td>
+                                             <td width="150px">
+                                                <a href="details.php?order_id=' . $item['order_id'] . '" class="btn btn-success">Chi tiết</a>
+                                             </td>
                                         </tr>
                                     ';
                                 }
