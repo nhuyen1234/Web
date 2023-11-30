@@ -4,6 +4,10 @@
 require_once('../database/dbhelper.php');
 require_once('../utils/utility.php');
 
+session_start();
+    if(!isset($_SESSION['submit'])){
+        header('Location: login.php');
+}
 
     $cart = [];
     if (isset($_COOKIE['cart'])) {

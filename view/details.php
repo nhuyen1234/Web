@@ -2,11 +2,15 @@
 header("content-type:text/html; charset=UTF-8");
 ?>
 <?php
-            session_start();
-            if(isset($_GET['dangxuat'])&&$_GET['dangxuat']==1){
-                unset($_SESSION['submit']);
-                header('Location:index.php');
-            }
+session_start();
+  if(!isset($_SESSION['submit'])) {
+      header('Location: login.php');
+}
+            
+if(isset($_GET['dangxuat'])&&$_GET['dangxuat']==1){
+    unset($_SESSION['submit']);
+    header('Location:index.php');
+}
 ?>
 <?php
 include('config.php');

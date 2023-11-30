@@ -97,7 +97,7 @@ require_once('database/dbhelper.php');
                                             <td width="100px">' . $item['phone_number'] . '</td>
                                             <td>
                                                 <select name="status" id="status" onchange="status(' . $item['order_id'] . ')">
-                                                    <option value="Đang chuẩn bị">Đang chuẩn bị</option>
+                                                    <option value="Đơn hàng mới">Đơn hàng mới</option>
                                                     <option value="Chờ thanh toán">Chờ thanh toán</option>
                                                     <option value="Đặt hàng thành công">Đặt hàng thành công</option>
                                                     <option value="Trả hàng">Trả hàng</option>
