@@ -365,7 +365,7 @@ session_start();
                             </tbody>
                         </table>
                         <p>Tổng đơn hàng: <span class="red bold"><?= number_format($total, 0, ',', '.') ?><span> VNĐ</span></span></p>
-                        <button class="btn btn-success" onclick="checkLogin()">Thanh toán</button>
+                        <button class="btn btn-success" onclick="">Thanh toán</button>
                             
                     
                     </div>

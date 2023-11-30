@@ -532,7 +532,7 @@ section.main section.oder-product .title .main-order .box .about .size ul li a {
   color: black;
 }
 section.main section.oder-product .title .main-order .box .number {
-}
+} 
 section.main
   section.oder-product
   .title
