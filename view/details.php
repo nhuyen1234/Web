@@ -431,7 +431,9 @@ padding-right: 30px;
 
 </div>
 <script type="text/javascript">
+    
     function addToCart(id) {
+        
         var num = document.querySelector('#num').value; // số lượng
         $.post('../api/cookie.php', {
             'action': 'add',

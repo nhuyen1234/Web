@@ -72,13 +72,13 @@ if (isset($_GET['id'])) {
             <a class="nav-link" href="../dashboard.php">Quản lý đơn hàng</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link" href="../user/index.php">Quản lý Khách hàng</a>
+            <a class="nav-link" href="../user/index.php">Quản lý người dùng</a>
         </li>
     </ul>
     <div class="container">
-        <div class="panel panel-primary">
+        <div class="panel panel-primary"><br>
             <div class="panel-heading">
-                <h2 class="text-center">Thêm/Sửa Danh Mục</h2>
+                <h2 class="text-center">Thêm Danh Mục</h2>
             </div>
             <div class="panel-body">
                 <form method="POST">

@@ -35,7 +35,7 @@ header("content-type:text/html; charset=UTF-8");
         <header>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="category/index.php">Thống kê</a>
+                    <a class="nav-link active" href="index.php">Thống kê</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="category/index.php">Quản lý danh mục</a>
@@ -47,7 +47,7 @@ header("content-type:text/html; charset=UTF-8");
                     <a class="nav-link " href="dashboard.php">Quản lý đơn hàng</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link " href="user/index.php">Quản lý Khách hàng</a>
+                    <a class="nav-link " href="user/index.php">Quản lý người dùng</a>
                 </li>
             </ul>
         </header>

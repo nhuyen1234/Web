@@ -361,7 +361,13 @@ require_once('../utils/utility.php');
                             </tbody>
                         </table>
                         <p>Tổng đơn hàng: <span class="red bold"><?= number_format($total, 0, ',', '.') ?><span> VNĐ</span></span></p>
-                        <a href="checkout.php" onclick="checkLogin()"><button class="btn btn-success">Thanh toán</button></a>
+                        <?php 
+                            $sql = "SELECT * from tbl_dangky";
+                            $result = executeResult($sql);
+                           
+                                echo '<button class="btn btn-success" onclick="checkLogin('.$result['id_dangky'].')">Thanh toán</button>';
+                            
+                        ?>
                     </div>
                 </div>
             </section>
@@ -378,10 +384,17 @@ require_once('../utils/utility.php');
             })
         }
 
-        function checkLogin() {
-
-        }
+        
     </script>
+    <?php
+        function checkLogin() {
+            if(!isset($_GET['id_dangky'])){
+                header('location: login.php');
+            } else {
+                header('location: checkout.php');
+            }
+        }
+    ?>
 </body>
 <style>
     .b-500 {

@@ -1,5 +1,31 @@
 <?php
     require_once('../database/dbhelper.php');
+    $id = $tendangnhap = $tenkhachhang = $matkhau = $email = $diachi = $dienthoai = "";
+    
+    if(isset($_GET['id_dangky'])) {
+        $id = $_GET['id_dangky'];
+        $sql = "select * from tbl_dangky";
+        $user = execute_query($sql);
+        if($user != null) {
+            $tenkhachhang = $user['tenkhachhang'];
+            $tendangnhap = $user['tendangnhap'];
+            $matkhau = $user['matkhau'];
+            $email = $user['email'];
+            $diachi = $user['diachi'];
+            $dienthoai = $user['dienthoai'];
+        }
+    }
+    if (!empty($tendangnhap)) {
+        if ($id_dangky == '') {
+            $sql = 'insert into tbl_dangky(tenkhachhang, tendangnhap, email, diachi, matkhau, dienthoai) 
+            values ("' . $tenkhachhang . '","' . $tendangnhap . '","' . $matkhau . '","' . $email . '","' . $diachi . '","' . $dienthoai . '")';
+        } else {
+            $sql = 'update tbl_dangky set tenkhachhang = '.$tenkhachhang.', tendangnhap = '.$tendangnhap.', matkhau = '.$matkhau.', email = '.$email.', diachi = '.$diachi.', dienthoai = '.$dienthoai.' where id_dangky=' . $id;
+        }
+        execute_query($sql);
+        header('Location: index.php');
+        die();
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,63 +52,56 @@
 <body>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="category/index.php">Thống kê</a>
+            <a class="nav-link" href="../category/index.php">Thống kê</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="category/index.php">Quản lý danh mục</a>
+            <a class="nav-link" href="../category/index.php">Quản lý danh mục</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="product/">Quản lý sản phẩm</a>
+            <a class="nav-link" href="../product/">Quản lý sản phẩm</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link " href="dashboard.php">Quản lý đơn hàng</a>
+            <a class="nav-link " href="../dashboard.php">Quản lý đơn hàng</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link active" href="../user/index.php">Quản lý Khách hàng</a>
+            <a class="nav-link active" href="../user/index.php">Quản lý người dùng</a>
         </li>
     </ul>
     <div class="container">
         <div class="panel panel-primary">
-            <br><div class="panel-heading">
-                <h2 class="text-center">Sửa người dùng</h2>
-            </div><br>
+            <div class="panel-heading">
+                <h2 class="text-center">Thêm/Sửa người dùng</h2>
+            </div>
             <div class="panel-body">
-                <form action="" method="POST">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr style="font-weight: 500;text-align: center;">
-                                <td width="70px">STT</td>
-                                <td>Tên khách hàng</td>
-                                <td>Tên đăng nhập</td>
-                                <td>Email</td>
-                                <td>Địa chỉ</td>
-                                <td>Mật khẩu</td>
-                                <td>Điện thoại</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            try {
-                                if (isset($_GET['id_dangky'])) {
-                                    $id_dangky = $_GET['id_dangky'];
-                                }
-                                $count = 0;
-                                $sql = "SELECT * from tbl_dangky";
-                                $signin_details_List = executeResult_query($sql);
-                                foreach ($signin_details_List as $item) {
-                                    echo '
-                                        
-                                    ';
-                                }
-                            } catch (Exception $e) {
-                                die("Lỗi thực thi sql: " . $e->getMessage());
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                    <a href="index.php" class="btn btn-warning">Back</a>
+                <form method="POST">
+                    <div class="form-group">
+                        <label>Tên người dùng:</label>
+                        <input type="hidden" name="" value="<?= $id_dangky ?>">
+                        <input type="text" class="form-control" name="name" value="<?= $tenkhachhang ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Tên đăng nhập:</label>
+                        <input type="text" class="form-control" name="username" value="<?= $tendangnhap ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Mật khẩu:</label>
+                        <input type="text" class="form-control" name="password" value="<?= $matkhau ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" class="form-control" name="email" value="<?= $email ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ:</label>
+                        <input type="text" class="form-control" name="address" value="<?= $diachi ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Điện thoại:</label>
+                        <input type="text" class="form-control" name="phone" value="<?= $dienthoai ?>">
+                    </div>
+                    <button class="btn btn-success" onclick="submitUser()">Lưu</button>
+                    <a href="<?= $previous ?>" class="btn btn-warning">Back</a>
                 </form>
-                
             </div>
         </div>
     </div>

@@ -43,7 +43,7 @@ header("content-type:text/html; charset=UTF-8");
             <a class="nav-link " href="../dashboard.php">Quản lý đơn hàng</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link active" href="../user/index.php">Quản lý Khách hàng</a>
+            <a class="nav-link active" href="../user/index.php">Quản lý người dùng</a>
         </li>
     </ul>
     <div class="container">
@@ -87,10 +87,10 @@ header("content-type:text/html; charset=UTF-8");
                                         <td>' . $item['matkhau'] .'</td>
                                         <td>' . $item['dienthoai'] .'</td>
                                         <td width="100px">
-                                            <a href="edit.php?id_dangky=' . $item['id_dangky'] . '" class="btn btn-success">Sửa</a>
+                                            <a href="edit.php?id_dangky='. $item['id_dangky'] .'" class="btn btn-success">Sửa</a>
                                         </td>
                                         <td>            
-                                            <a class="btn btn-danger" href="delete.php?id_dangky='.$item['id_dangky'].'">Xoá</a>
+                                            <a href="delete.php?id_dangky='.$item['id_dangky'].'" class="btn btn-danger" >Xoá</a>
                                         </td>
                                     </tr>
                                 ';

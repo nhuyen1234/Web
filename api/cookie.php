@@ -6,6 +6,7 @@ if(!empty($_POST)) {
 	$id = getPost('id');
 	$num = getPost('num');
 
+
 	$cart = [];
 	if(isset($_COOKIE['cart'])) {
 		$json = $_COOKIE['cart']; 
@@ -40,5 +41,11 @@ if(!empty($_POST)) {
 			}
 			setcookie('cart', json_encode($cart), time() + 30*24*60*60, '/');
 		break;
+
+
 	}
 }
+
+
+
+?>
