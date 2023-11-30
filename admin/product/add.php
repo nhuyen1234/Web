@@ -111,7 +111,7 @@ if (!empty($_POST['title'])) {
             // Sửa danh mục
             $sql = 'update product set title="' . $title . '",price="' . $price . '",number="' . $number . '",thumbnail="' . $target_file . '",content="' . $content . '",id_category="' . $id_category . '", updated_at="' . $updated_at . '" where id=' . $id;
         }
-        execute($sql);
+        execute_query($sql);
         header('Location: index.php');
         die();
     }
