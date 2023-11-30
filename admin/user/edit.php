@@ -4,27 +4,29 @@
     
     if(isset($_GET['id_dangky'])) {
         $id = $_GET['id_dangky'];
-        $sql = "select * from tbl_dangky";
+        $sql = "select * from tbl_dangky where id_dangky=".$id;
         $user = execute_query($sql);
         if($user != null) {
-            $tenkhachhang = $user['tenkhachhang'];
-            $tendangnhap = $user['tendangnhap'];
-            $matkhau = $user['matkhau'];
-            $email = $user['email'];
-            $diachi = $user['diachi'];
-            $dienthoai = $user['dienthoai'];
+            $tenkhachhang = $_GET['tenkhachhang'];
+            $tendangnhap = $_GET['tendangnhap'];
+            $matkhau = $_GET['matkhau'];
+            $email = $_GET['email'];
+            $diachi = $_GETr['diachi'];
+            $dienthoai = $_GET['dienthoai'];
         }
     }
     if (!empty($tendangnhap)) {
-        if ($id_dangky == '') {
+        if ($id_dangky !== '') {
+            $sql = 'update tbl_dangky set tenkhachhang = '.$tenkhachhang.', tendangnhap = '.$tendangnhap.', matkhau = '.$matkhau.', email = '.$email.', diachi = '.$diachi.', dienthoai = '.$dienthoai.' where id_dangky=' . $id;
+            executeSingleResult_query($sql);
+        } else {
             $sql = 'insert into tbl_dangky(tenkhachhang, tendangnhap, email, diachi, matkhau, dienthoai) 
             values ("' . $tenkhachhang . '","' . $tendangnhap . '","' . $matkhau . '","' . $email . '","' . $diachi . '","' . $dienthoai . '")';
-        } else {
-            $sql = 'update tbl_dangky set tenkhachhang = '.$tenkhachhang.', tendangnhap = '.$tendangnhap.', matkhau = '.$matkhau.', email = '.$email.', diachi = '.$diachi.', dienthoai = '.$dienthoai.' where id_dangky=' . $id;
+            executeSingleResult_query($sql);
         }
-        execute_query($sql);
-        header('Location: index.php');
-        die();
+        
+        // header('Location: index.php');
+        // die();
     }
 ?>
 <!DOCTYPE html>
@@ -76,8 +78,8 @@
                 <form method="POST">
                     <div class="form-group">
                         <label>Tên người dùng:</label>
-                        <input type="hidden" name="" value="<?= $id_dangky ?>">
-                        <input type="text" class="form-control" name="name" value="<?= $tenkhachhang ?>">
+                        <input type="hidden" name="" value="<?= $id ?>">
+                        <input type="text" class="form-control" name="name" value="<?=$tenkhachhang?>">
                     </div>
                     <div class="form-group">
                         <label>Tên đăng nhập:</label>

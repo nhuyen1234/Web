@@ -1,9 +1,6 @@
-<?php /*
-    session_start();
-	if(!isset($_SESSION['submit'])){
-		header('Location: login.php');
-	}
- */ ?>
+<?php
+    
+ ?>
 
 <?php require_once('database/config.php');
 require_once('database/dbhelper.php');?>
