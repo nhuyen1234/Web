@@ -108,7 +108,7 @@ if (!empty($_POST['title'])) {
             $sql = 'insert into product(title, price, number, thumbnail, content, id_category, created_at, updated_at) 
             values ("' . $title . '","' . $price . '","' . $number . '","' . $target_file . '","' . $content . '","' . $id_category . '","' . $created_at . '","' . $updated_at . '")';
         } else {
-            // Sửa danh mục
+            // Sửa sản phẩm
             $sql = 'update product set title="' . $title . '",price="' . $price . '",number="' . $number . '",thumbnail="' . $target_file . '",content="' . $content . '",id_category="' . $id_category . '", updated_at="' . $updated_at . '" where id=' . $id;
         }
         execute_query($sql);

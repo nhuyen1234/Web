@@ -2,32 +2,34 @@
     require_once('../database/dbhelper.php');
     $id = $tendangnhap = $tenkhachhang = $matkhau = $email = $diachi = $dienthoai = "";
     
-    if(isset($_GET['id_dangky'])) {
-        $id = $_GET['id_dangky'];
-        $sql = "select * from tbl_dangky where id_dangky=".$id;
-        $user = execute_query($sql);
-        if($user != null) {
-            $tenkhachhang = $_GET['tenkhachhang'];
-            $tendangnhap = $_GET['tendangnhap'];
-            $matkhau = $_GET['matkhau'];
-            $email = $_GET['email'];
-            $diachi = $_GETr['diachi'];
-            $dienthoai = $_GET['dienthoai'];
+    
+        if(isset($_GET['id_dangky'])) {
+            $id = $_GET['id_dangky'];
+            $sql = "select * from tbl_dangky where id_dangky=".$id;
+            $user = execute_query($sql);
+            if($user != null) {
+                $tenkhachhang = $user['tenkhachhang'];
+                $tendangnhap = $user['tendangnhap'];
+                $matkhau = $user['matkhau'];
+                $email = $user['email'];
+                $diachi = $user['diachi'];
+                $dienthoai = $user['dienthoai'];
+            }
         }
-    }
-    if (!empty($tendangnhap)) {
-        if ($id_dangky !== '') {
-            $sql = 'update tbl_dangky set tenkhachhang = '.$tenkhachhang.', tendangnhap = '.$tendangnhap.', matkhau = '.$matkhau.', email = '.$email.', diachi = '.$diachi.', dienthoai = '.$dienthoai.' where id_dangky=' . $id;
-            executeSingleResult_query($sql);
-        } else {
-            $sql = 'insert into tbl_dangky(tenkhachhang, tendangnhap, email, diachi, matkhau, dienthoai) 
-            values ("' . $tenkhachhang . '","' . $tendangnhap . '","' . $matkhau . '","' . $email . '","' . $diachi . '","' . $dienthoai . '")';
-            executeSingleResult_query($sql);
+        if (!empty($tendangnhap)) {
+            if ($id !== '') {
+                $sql = 'update tbl_dangky set tenkhachhang = '.$tenkhachhang.', tendangnhap = '.$tendangnhap.', matkhau = '.$matkhau.', email = '.$email.', diachi = '.$diachi.', dienthoai = '.$dienthoai.' where id_dangky=' . $id;
+                
+            } else {
+                $sql = 'insert into tbl_dangky(tenkhachhang, tendangnhap, email, diachi, matkhau, dienthoai) 
+                values ("' . $tenkhachhang . '","' . $tendangnhap . '","' . $matkhau . '","' . $email . '","' . $diachi . '","' . $dienthoai . '")';
+               
+            }
+            execute_query($sql);
+            // header('Location: index.php');
+            // die();
         }
-        
-        // header('Location: index.php');
-        // die();
-    }
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,16 +80,16 @@
                 <form method="POST">
                     <div class="form-group">
                         <label>Tên người dùng:</label>
-                        <input type="hidden" name="" value="<?= $id ?>">
-                        <input type="text" class="form-control" name="name" value="<?=$tenkhachhang?>">
+                        <input type="hidden" name="id_dangky" value="<?= $id ?>">
+                        <input type="text" class="form-control" name="tenkhachhang" value="<?=$tenkhachhang?>">
                     </div>
                     <div class="form-group">
                         <label>Tên đăng nhập:</label>
-                        <input type="text" class="form-control" name="username" value="<?= $tendangnhap ?>">
+                        <input type="text" class="form-control" name="tendangnhap" value="<?= $tendangnhap ?>">
                     </div>
                     <div class="form-group">
                         <label>Mật khẩu:</label>
-                        <input type="text" class="form-control" name="password" value="<?= $matkhau ?>">
+                        <input type="text" class="form-control" name="matkhau" value="<?= $matkhau ?>">
                     </div>
                     <div class="form-group">
                         <label>Email:</label>
@@ -95,13 +97,13 @@
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ:</label>
-                        <input type="text" class="form-control" name="address" value="<?= $diachi ?>">
+                        <input type="text" class="form-control" name="diachi" value="<?= $diachi ?>">
                     </div>
                     <div class="form-group">
                         <label>Điện thoại:</label>
-                        <input type="text" class="form-control" name="phone" value="<?= $dienthoai ?>">
+                        <input type="text" class="form-control" name="dienthoai" value="<?= $dienthoai ?>">
                     </div>
-                    <button class="btn btn-success" onclick="submitUser()">Lưu</button>
+                    <button class="btn btn-success" onclick="submitUser($id)">Lưu</button>
                     <a href="<?= $previous ?>" class="btn btn-warning">Back</a>
                 </form>
             </div>
