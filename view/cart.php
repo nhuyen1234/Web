@@ -116,14 +116,14 @@ require_once('../utils/utility.php');
                                 
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
                                 <div class="logout">
-                                <a href="/Web/admin/login.php"><i class="fas fa-user-edit"></i>Admin</a> <br>                             
+                                <a href="/Web/admin/index.php"><i class="fas fa-user-edit"></i>Admin</a> <br>                             
                                 <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                                 </div>';
                                                         }
                             else{
                                 echo '<a style="color:black;" href="">' . $_SESSION['submit'] . '</a>
                                 <div class="logout">
-                                <a href="#"><i class="fas fa-exchange-alt"></i>Đổi mật khẩu</a> <br>                           
+                                <a href=""><i class="fas fa-exchange-alt"></i>Đổi mật khẩu</a> <br>                           
                                 <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                                 </div>';
                                                         }
@@ -362,7 +362,7 @@ require_once('../utils/utility.php');
                         </table>
                         <p>Tổng đơn hàng: <span class="red bold"><?= number_format($total, 0, ',', '.') ?><span> VNĐ</span></span></p>
                         
-                                <a href="checkout.php"><button class="btn btn-success" onclick="checkLogin()">Thanh toán</button></a>
+                                <a href="checkout.php"><button class="btn btn-success">Thanh toán</button></a>
                             
                     
                     </div>
@@ -381,9 +381,7 @@ require_once('../utils/utility.php');
             })
         }
 
-        function checklogin(){
-            
-        }
+        
         
     </script>
     
