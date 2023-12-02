@@ -171,7 +171,7 @@ include('config.php');
             </script>';
         } else{
             echo '<script language="javascript">
-                alert("Tài khoản và mật khẩu không chính xác !");
+                alert("Tài khoản hoặc mật khẩu không chính xác !");
                 window.location = "login.php";
              </script>';
         }
