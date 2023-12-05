@@ -300,7 +300,7 @@ require_once('../utils/utility.php');
                             <tbody>
                                 <?php
                                 
-                                if (isset($_COOKIE['tendangnhap']) && $user_admin = 'Admin_Chu' ) {
+                                if (isset($_COOKIE['tendangnhap']) && $user_admin = 'Admin_Nyen' ) {
                                     $tendangnhap = $_COOKIE['tendangnhap'];
 
                                     $sql = "SELECT * FROM tbl_admin WHERE tendangnhap = '$tendangnhap'";
