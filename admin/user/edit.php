@@ -1,6 +1,6 @@
 <?php
     require_once('../database/dbhelper.php');
-    $id = $tendangnhap = $tenkhachhang = $matkhau = $email = $diachi = $dienthoai = "";
+    // $id = $tendangnhap = $tenkhachhang = $matkhau = $email = $diachi = $dienthoai = "";
     
     
         if(isset($_GET['id_dangky'])) {

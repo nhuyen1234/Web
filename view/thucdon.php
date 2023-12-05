@@ -322,7 +322,7 @@ if(isset($_GET['dangxuat'])&&$_GET['dangxuat']==1){
                                 echo '
                                 <div class="col">
                                     <a href="details.php?id=' . $item['id'] . '">
-                                        <img class="thumbnail" src="./admin/product/' . $item['thumbnail'] . '" alt="">
+                                        <img class="thumbnail" src="../admin/product/' . $item['thumbnail'] . '" alt="">
                                         <div class="title">
                                             <p>' . $item['title'] . '</p>
                                         </div>
