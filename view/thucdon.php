@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['submit'])){
     header('Location: login.php');
 }
-session_start();
+// session_start();
 if(isset($_GET['dangxuat'])&&$_GET['dangxuat']==1){
     unset($_SESSION['submit']);
     header('Location:index.php');

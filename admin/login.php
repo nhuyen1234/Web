@@ -15,7 +15,7 @@
 		if($count_admin > 0){
             $_SESSION['submit'] = $user_admin;
             echo '<script>alert("Đăng nhập Admin thành công ^^");
-                window.location.href="index.php";
+                window.location.href="../index.php";
                 </script>';
         }
         else{

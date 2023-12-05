@@ -104,7 +104,7 @@ if (!empty($_POST['title'])) {
         $created_at = $updated_at = date('Y-m-d H:s:i');
         // Lưu vào DB
         if ($id == '') {
-            // Thêm danh mục
+            // Thêm sản phẩm
             $sql = 'insert into product(title, price, number, thumbnail, content, id_category, created_at, updated_at) 
             values ("' . $title . '","' . $price . '","' . $number . '","' . $target_file . '","' . $content . '","' . $id_category . '","' . $created_at . '","' . $updated_at . '")';
         } else {
