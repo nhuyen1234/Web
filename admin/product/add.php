@@ -177,7 +177,7 @@ if (isset($_GET['id'])) {
                 <h2 class="text-center">Thêm/Sửa Sản Phẩm</h2>
             </div>
             <div class="panel-body">
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" >
                     <div class="form-group">
                         <label for="name">Tên Sản Phẩm:</label>
                         <input type="text" id="id" name="id" value="<?= $id ?>" hidden="true">
@@ -202,7 +202,7 @@ if (isset($_GET['id'])) {
                     </div>
                     <div class="form-group">
                         <label for="name">Giá Sản Phẩm:</label>
-                        <input required="true" type="text" class="form-control" id="price" name="price" value="<?= $price ?>">
+                        <input required="true" type="text" class="form-control" id="price" name="price" value="<?= $price ?>" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                     </div>
                     <div class="form-group">
                         <label for="name">Số Lượng Sản Phẩm:</label>
@@ -242,9 +242,21 @@ if (isset($_GET['id'])) {
         })
 		function addProduct()
         {
+            var title=$('#title').val();
+            var id_category=$('#id_category').val();
+            var price=$('#price').val();
+            var number = $('#number').val();
+            var thumbnail = $('#thumbnail').val();
+            var content = $('#content').val();
+
+        if (title === '' || id_category === 'Chọn danh mục' || price === '' || number === '' || thumbnail === '' || content === '') {
+            alert('Vui lòng điền đầy đủ thông tin sản phẩm.');
+            return false;
+        }
+  
             var option = confirm('Bạn thêm sản phẩm thành công')
             if (!option) {
-                return;
+                return false;
             }
         }
     </script>
