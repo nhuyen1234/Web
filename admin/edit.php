@@ -99,7 +99,9 @@ require_once('database/dbhelper.php');
                                                 <select name="status" id="status" onchange="status(' . $item['order_id'] . ')">
                                                     <option value="Đơn hàng mới">Đơn hàng mới</option>
                                                     <option value="Đang xử lý">Đang xử lý</option>
-                                                    <option value="Đã thanh toán">Đã thanh toán</option>
+                                                    <option value="Đang giao hàng">Đang giao hàng</option>
+                                                    <option value="Đã hoàn thành">Đã hoàn thành</option>
+                                                    <option value="Hủy">Hủy</option>
                                                 </select>
                                             </td>
                                             <td width="100px">

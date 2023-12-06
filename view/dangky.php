@@ -15,7 +15,9 @@
                 window.location.href="../index.php";
                 </script>';
                 
-			} 
+			}else{
+        echo '<script>alert("Yêu cầu nhập tất cả các trường hợp")</script>';
+      }
 		
 		}
 	}
@@ -297,38 +299,70 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">Họ và tên</span>
-            <input type="text" name="hovaten"  placeholder="Enter your name" required>
+            <input type="text" id="hovaten" name="hovaten"  placeholder="Enter your name" required="true">
           </div>
           <div class="input-box">
             <span class="details">Tên đăng nhập</span>
-            <input type="text" name="tendangnhap" placeholder="Enter your username" required>
+            <input type="text" id="tendangnhap" name="tendangnhap" placeholder="Enter your username" required="true" >
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" name="email" placeholder="Enter your email" required>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required="true">
           </div>
           <div class="input-box">
             <span class="details">Số điện thoại</span>
-            <input type="text" name="dienthoai" placeholder="Enter your number" required>
+            <input type="text" id="dienthoai" name="dienthoai" placeholder="Enter your number" required="true">
           </div>
           <div class="input-box">
             <span class="details">Mật khẩu</span>
-            <input type="text" name="matkhau" placeholder="Enter your password" required>
+            <input type="text" id="matkhau" name="matkhau" placeholder="Enter your password" required="true">
           </div>
           <div class="input-box">
             <span class="details">Địa chỉ</span>
-            <input type="text" name="diachi" placeholder="Enter your Address" required>
+            <input type="text" id="diachi" name="diachi" placeholder="Enter your Address" required="true">
           </div>
         </div>
         
         <div class="button">
-          <input type="submit" name="dangky" value="Đăng ký">
+          <input type="submit" name="dangky" value="Đăng ký" onclick="validateForm()">
         </div>
       </form>
     </div>
   </div>
 
+  <script type="text/javascript">
+  function validateForm() {
+    var hovaten = $('#hovaten').val();
+    var tendangnhap = $('#tendangnhap').val();
+    var email = $('#email').val();
+    var dienthoai = $('#dienthoai').val();
+    var matkhau = $('#matkhau').val();
+    var diachi =$('#diachi').val();
 
+    if (hovaten === '' || tendangnhap === '' || email === '' || dienthoai === '' || matkhau === '' || diachi === '') {
+      alert('Vui lòng điền đầy đủ thông tin');
+      return false;
+    }
+
+    // Kiểm tra định dạng email
+    var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!emailPattern.test(email)) {
+      alert('Định dạng email không hợp lệ');
+      return false;
+    }
+
+    // Kiểm tra định dạng số điện thoại
+    var phonePattern = /^[0-9]+$/;
+    if (!phonePattern.test(dienthoai)) {
+      alert('Số điện thoại không hợp lệ');
+      return false;
+    }
+
+    // Các điều kiện khác có thể được thêm vào tùy thuộc vào yêu cầu cụ thể của bạn.
+
+    return true;
+  }
+</script>
 
 <style>
 

@@ -137,7 +137,7 @@ include('config.php');
                     <label for="">Mật khẩu:</label>
                     <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
                 </div>
-                <a href="forget.php">Quên mật khẩu</a>
+                <a href="#">Quên mật khẩu</a>
                 <div style="padding-top: 5px;" class="form-group">
                     <input type="submit" name="submit" class="btn btn-primary" value="Đăng nhập">
                     <p>Bạn chưa có tài khoản? <a href="reg.php">Đăng ký</a></p>

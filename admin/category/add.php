@@ -81,12 +81,11 @@ if (isset($_GET['id'])) {
                 <h2 class="text-center">Thêm Danh Mục</h2>
             </div>
             <div class="panel-body">
-                <form method="POST" id="categoryForm" onsubmit="return validateForm()">
+                <form method="POST">
                     <div class="form-group">
                         <label for="name">Tên Danh Mục:</label>
                         <input type="text" id="id" name="id" value="<?= $id ?>" hidden='true'>
-                        <input type="text" class="form-control" id="name" name="name" value="<?= $name ?>">
-                        <span id="nameError" style="color: red;"></span>
+                        <input required="true" type="text" class="form-control" id="name" name="name" value="<?= $name ?>">
                     </div>
                     <button class="btn btn-success">Lưu</button>
                     <?php
@@ -101,11 +100,28 @@ if (isset($_GET['id'])) {
         </div>
     </div>
 	<script type="text/javascript">
+        function validateForm() {
+        var name = document.getElementById('name').value;
+        if (name.trim() === '') {
+            alert('Tên Danh Mục không được để trống.');
+            return false; 
+        }
+        return true;
+        }
         function addProduct()
         {
+            // var option = confirm('Bạn thêm sản phẩm thành công')
+            // if (!option) {
+            //     return;
+            // }
+            var $name=$('#name').val();
+            if($name===''){
+               alert('Vui lòng nhập tên danh mục');
+               return false;
+            }
             var option = confirm('Bạn thêm sản phẩm thành công')
             if (!option) {
-                return;
+                return true;
             }
         }
     </script>

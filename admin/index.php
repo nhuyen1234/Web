@@ -49,6 +49,9 @@ header("content-type:text/html; charset=UTF-8");
                 <li class="nav-item ">
                     <a class="nav-link " href="user/index.php">Quản lý người dùng</a>
                 </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="../index.php">Trang chủ</a>
+                </li>
             </ul>
         </header>
         <div class="container">
@@ -78,16 +81,6 @@ header("content-type:text/html; charset=UTF-8");
                             <p><a href="user/">xem chi tiết➜</a></p>
                         </div>
                         <div class="sp dm">
-                            <p>Danh mục</p>
-                            <?php
-                            $sql = "SELECT * FROM `category`";
-                            $conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
-                            $result = mysqli_query($conn, $sql);
-                            echo '<span>' . mysqli_num_rows($result) . '</span>';
-                            ?>
-                            <p><a href="category/">xem chi tiết➜</a></p>
-                        </div>
-                        <div class="sp dh">
                             <p>Đơn hàng</p>
                             <?php
                             $sql = "SELECT * FROM `order_details`";
@@ -97,7 +90,28 @@ header("content-type:text/html; charset=UTF-8");
                             ?>
                             <p><a href="dashboard.php">xem chi tiết➜</a></p>
                         </div>
+                        <div class="sp dh">
+                            <p>Tổng doanh thu</p>
+                            <?php
+                            $sql = "SELECT SUM(price) as tongdoanhthu FROM order_details WHERE 1";
+                            $result = executeResult_query($sql);
+                            if (is_array($result) && !empty($result[0]) && isset($result[0]['tongdoanhthu'])) {
+                                $tongdoanhthu = $result[0]['tongdoanhthu'];
+                                echo "<h2>$tongdoanhthu<span>vnd</span></h2>";
+                            } else {
+                                echo "Lỗi";
+                            }
+                            ?>
+                        </div>
                     </div>
+                    <!-- <p>Danh mục</p>
+                    <?php
+                    // $sql = "SELECT * FROM `category`";
+                    // $conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
+                    // $result = mysqli_query($conn, $sql);
+                    // echo '<span>' . mysqli_num_rows($result) . '</span>';
+                    ?>
+                    <p><a href="category/">xem chi tiết➜</a></p> -->
                 </section>
                 <section class="new-order">
                     <h4>Đơn hàng mới</h4>

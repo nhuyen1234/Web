@@ -50,20 +50,20 @@ header("content-type:text/html; charset=UTF-8");
         <div class="panel panel-primary">
             <br>
             <div class="panel-heading">
-                <h2 class="text-center">Quản lý Khách hàng</h2>
+                <h2 class="text-center">Quản lý Người Dùng</h2>
             </div>
             <br>
             <table class="table table-bordered table-hover" style="text-align:center">
                 <thead>
                     <tr style="font-weight: 500;">
                         <td width="70px">STT</td>
-                        <td>Tên khách hàng</td>
+                        <td>Tên Ngươì dùng</td>
                         <td>Tên đăng nhập</td>
                         <td>Email</td>
                         <td>Địa chỉ</td>
                         <td>Mật khẩu</td>
                         <td>Điện thoại</td>
-                        <td colspan=2>Thao tác</td>
+                        <td>Thao tác</td>
                         
                     </tr>
                 </thead>
@@ -86,9 +86,6 @@ header("content-type:text/html; charset=UTF-8");
                                         <td>' . $item['diachi'] . '</td>
                                         <td>' . $item['matkhau'] .'</td>
                                         <td>' . $item['dienthoai'] .'</td>
-                                        <td width="100px">
-                                            <a href="edit.php?id_dangky='. $item['id_dangky'] .'" class="btn btn-success">Sửa</a>
-                                        </td>
                                         <td>            
                                             <a href="delete.php?id_dangky='.$item['id_dangky'].'" class="btn btn-danger" >Xoá</a>
                                         </td>
