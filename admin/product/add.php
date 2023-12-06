@@ -202,7 +202,7 @@ if (isset($_GET['id'])) {
                     </div>
                     <div class="form-group">
                         <label for="name">Giá Sản Phẩm:</label>
-                        <input required="true" type="text" class="form-control" id="price" name="price" value="<?= $price ?>">
+                        <input type="text" class="form-control" id="price" name="price" value="<?= $price ?>">
                     </div>
                     <div class="form-group">
                         <label for="name">Số Lượng Sản Phẩm:</label>
@@ -240,13 +240,35 @@ if (isset($_GET['id'])) {
                 height: 200
             });
         })
-		function addProduct()
-        {
-            var option = confirm('Bạn thêm sản phẩm thành công')
-            if (!option) {
-                return;
+        function validateForm() {
+            // Lấy gía trị input
+            var title = document.getElementById('title').value;
+            var idCategory = document.getElementById('id_category').value;
+            var price = document.getElementById('price').value;
+            var number = document.getElementById('number').value;
+            var thumbnail = document.getElementById('exampleFormControlFile1').value;
+            var content = document.getElementById('content').value;
+
+            // check các giá trị ko dc rỗng
+            if (title.trim() === '' || idCategory === 'Chọn danh mục' || price.trim() === '' || number.trim() === '' || thumbnail.trim() === '' || content.trim() === '') {
+                alert('Vui lòng điền đầy đủ thông tin.');
+                return false; 
             }
+
+            var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+            if (!allowedExtensions.exec(thumbnail)) {
+                alert('Vui lòng chọn file ảnh có định dạng JPG, JPEG, PNG hoặc GIF.');
+                return false; 
+            }
+
+            return true;
         }
+		// function addProduct() {
+        //     var option = confirm('Bạn thêm sản phẩm thành công');
+        //     if (!option) {
+        //         return;
+        //     }
+        // }
     </script>
 </body>
 
