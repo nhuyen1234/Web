@@ -119,13 +119,13 @@ if (isset($_GET['id'])) {
                alert('Vui lòng nhập tên danh mục');
                return false;
             }
-            var option = confirm('Bạn thêm sản phẩm thành công')
-            if (!option) {
-                return true;
-            }
+            // var option = confirm('Bạn thêm sản phẩm thành công')
+            // if (!option) {
+            //     return true;
+            // }
         }
     </script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         function validateForm() {
             var name = document.getElementById('name').value;
             var nameError = document.getElementById('nameError');
@@ -138,7 +138,7 @@ if (isset($_GET['id'])) {
 
             return true;
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
