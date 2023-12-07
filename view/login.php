@@ -25,7 +25,7 @@
 		}
         elseif($count_admin > 0){
             $_SESSION['submit'] = $user_admin;
-            echo '<script>alert("Xin chào Admin ^^");
+            echo '<script>alert("Xin chào Admin lại là tôi đây ^^ kiki");
                 window.location.href="../admin/index.php";
                 </script>';
           	$tendangnhap = trim(strip_tags($_POST['tendangnhap']));
