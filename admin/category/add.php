@@ -81,14 +81,13 @@ if (isset($_GET['id'])) {
                 <h2 class="text-center">Thêm Danh Mục</h2>
             </div>
             <div class="panel-body">
-                <form method="POST" onsubmit="return validateForm()" id="categoryForm">
+                <form method="POST">
                     <div class="form-group">
                         <label for="name">Tên Danh Mục:</label>
                         <input type="text" id="id" name="id" value="<?= $id ?>" hidden='true'>
                         <input required="true" type="text" class="form-control" id="name" name="name" value="<?= $name ?>">
-                        <span id="nameError" style="color: red;"></span>
                     </div>
-                    <button class="btn btn-success" onclick="addProduct()">Lưu</button>
+                    <button class="btn btn-success">Lưu</button>
                     <?php
                     $previous = "javascript:history.go(-1)";
                     if (isset($_SERVER['HTTP_REFERER'])) {
@@ -124,6 +123,20 @@ if (isset($_GET['id'])) {
             if (!option) {
                 return true;
             }
+        }
+    </script>
+    <script type="text/javascript">
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var nameError = document.getElementById('nameError');
+            if (name.trim() === '') {
+                nameError.innerHTML = 'Vui lòng nhập tên danh mục ';
+                return false;
+            } else {
+                nameError.innerHTML = '';
+            }
+
+            return true;
         }
     </script>
 </body>
