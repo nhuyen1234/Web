@@ -293,6 +293,7 @@ require_once('../utils/utility.php');
                                     <td>Giá</td>
                                     <td>Số lượng</td>
                                     <td>Tổng cộng</td>
+                                    <td>Ngày mua</td>
                                     <td>Trạng thái</td>
                                     <!-- <td width="50px"></td> -->
                                 </tr>
@@ -307,7 +308,7 @@ require_once('../utils/utility.php');
                                     $user = executeResult($sql); // in ra 1 dòng 
                                     foreach ($user as $item) {
                                         $userId = $item['id_admin'];
-                                        $sql = "SELECT * from order_details, product where product.id=order_details.product_id AND order_details.id_user = '$userId' ORDER BY order_id DESC";
+                                        $sql = "SELECT * from orders, order_details, product where order_details.order_id=orders.id AND order_details.id_user = '$userId' ORDER BY order_id DESC";
                                     }
 
                                     $order_details_List = executeResult($sql);
@@ -326,6 +327,7 @@ require_once('../utils/utility.php');
                                             <td class="b-500 orange">' . number_format($item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
                                             <td width="100px">' . $item['num'] . '</td>
                                             <td class="b-500 red">' . number_format($item['num'] * $item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
+                                            <td>'.$item['order_date'].'</td>
                                             <td style="color:green; font-weight:600;">' .$item['status'] . '</td>
                                         </tr>
                                         ';
@@ -340,12 +342,10 @@ require_once('../utils/utility.php');
                                     foreach ($user as $item) {
                                         $userId = $item['id_dangky'];
                                     }
-                                    
-                                    $sql = "SELECT * from order_details, product where product.id=order_details.product_id AND order_details.id_user = id_user ORDER BY order_id DESC";
+                                    $sql = "SELECT * from orders, order_details, product where order_details.order_id=orders.id AND order_details.id_user = id_user ORDER BY order_id DESC";
                                     $order_details_List = executeResult($sql);
                                     $total = 0;
                                     $count = 0;
-                                    
                                     // $sql = 'SELECT * FROM user where username = $username';
                                     foreach ($order_details_List as $item) {
                                         
@@ -359,6 +359,7 @@ require_once('../utils/utility.php');
                                             <td class="b-500 orange">' . number_format($item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
                                             <td width="100px">' . $item['num'] . '</td>
                                             <td class="b-500 red">' . number_format($item['num'] * $item['price'], 0, ',', '.') . '<span> VNĐ</span></td>
+                                            <td>'.$item['order_date'].'</td>
                                             <td style="color:green; font-weight:600;">' . $item['status'] . '</td>
                                         </tr>
                                         ';
